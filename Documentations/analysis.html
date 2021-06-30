@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analysis Document</title>
+</head>
+<body>
+    <h1>Analysis Document</h1>
+    <p> Version 1.0</p>
+
+    <h2>Table of Content</h2>
+    <ul>
+        <li><a href="#1">Entity Objects</a></li>
+        <li><a href="#2">Control Objects</a></li>
+        <li><a href="#3">Boundary Objects</a></li>
+        <li><a href="#4">Others</a></li>
+        <li><a href="#5">Object Diagram</a></li>
+        <li><a href="#6">Class Diagram</a></li>
+        <li>
+            <a href="#7">State Diagrams</a>
+            <ul>
+                <li><a href="#7.1">ARViewController</a></li>
+                <li><a href="#7.2">CarDBAccessController</a></li>
+                <li><a href="#7.3">DisplayPicController</a></li>
+                <li><a href="#7.4">ExternalLinkController</a></li>
+                <li><a href="#7.5">FilterController</a></li>
+                <li><a href="#7.6">UserController</a></li>
+            </ul>
+        </li>
+    </ul>
+    <h2 id="1">Entity Objects</h2>
+    <div>
+        <li>CarDatabase - This database stores all needed information about each individual
+            car that would be presented on the app, which includes the AR models. It is installed locally on the user's device alongside the application package.
+        </li>
+        <li>
+            LocalRecordStorage - The location in user’s phone storage where completed AR recordings are stored.
+        </li>
+        <li>PicStorage - A directory that has images needed for the home view and the splash view.</li>
+        <li>UserInformation - A firebase database that stores the information of the user.</li>
+    </div>
+
+    <h2 id="2">Control Objects</h2>
+    <div>
+        <li>ARViewController - </li>
+        <li>CarDBAccessController - </li>
+        <li>DisplayPicController - </li>
+        <li>ExternalLinkController - </li>
+        <li>FilterController - </li>
+        <li>UserController - </li>
+    </div>
+
+    <h2 id="3">Boundary Objects</h2>
+    <div>
+        <li>ARCamView - </li>
+        <li>CarRecordView - </li>
+        <li>DetailedCarView - </li>
+        <li>ExternalCarListingView - </li>
+        <li>HomeView - </li>
+        <li>RecordView - </li>
+        <li>SplashView - </li>
+        <li>UserAuthenticationView - </li>
+        <li>UserPasswordResetView - </li>
+        <li>UserRegistrationView - </li>
+        <li>UserSettingsView - </li>
+    </div>
+
+    <h2 id="4">Others</h2>
+    <div>
+        <li>Search Listener - </li>
+        <li>User - </li>
+    </div>
+
+    <h2 id="5">Object Diagram</h2>
+    <div style="width: 640px; height: 480px; margin: 10px; position: relative;">
+        <iframe allowfullscreen frameborder="2" style="width:640px; height:480px" src="https://lucid.app/documents/embeddedchart/18d7cca0-cdc5-4011-965f-9175a94f0b57" id="pSwQIuCJX2ie"></iframe>
+    </div>
+
+    <h2 id="6">Class Diagram</h2>
+    <div style="width: 480px; height: 360px; margin: 10px; position: relative;">
+        <iframe allowfullscreen frameborder="2" style="width:480px; height:360px" src="https://lucid.app/documents/embeddedchart/9361640c-176b-4e2a-a164-37e945321dc6" id=".XwQXKsT4IMu"></iframe>
+    </div>
+
+    <h2 id="7">State Diagrams</h2>
+    <p>Bolded rounded rectangles indicates a call to another controller.</p>
+    <h3 id="7.1">ARViewController</h3>
+    <div style="width: 480px; height: 360px; margin: 10px; position: relative;">
+        <iframe allowfullscreen frameborder="2" style="width:480px; height:360px" src="https://lucid.app/documents/embeddedchart/9ea1708b-c406-4a0e-96c0-3137e526c200" id=".ZwQC7rhDydb"></iframe>
+    </div>
+
+    <h3 id="7.2">CarDBAccessController</h3>
+    <div style="width: 480px; height: 360px; margin: 10px; position: relative;">
+        <iframe allowfullscreen frameborder="2" style="width:480px; height: 360px;" src="https://lucid.app/documents/embeddedchart/232e93ac-d89e-4dd7-975f-045404ecb701" id="KMwQiM1-ZlpU"></iframe>
+    </div>
+
+    <h3 id="7.3">DisplayPicController</h3>
+    <div style="width: 480px; height: 360px; margin: 10px; position: relative;">
+        <iframe allowfullscreen frameborder="2" style="width:480px; height:360px" src="https://lucid.app/documents/embeddedchart/d7e4c336-7d78-4fc9-898c-9919b57d9486" id="D5wQS88bd6Tf"></iframe>
+    </div>
+
+    <h3 id="7.4">ExternalLinkController</h3>
+    <div style="width: 480px; height: 360px; margin: 10px; position: relative;">
+        <iframe allowfullscreen frameborder="2" style="width:480px; height:360px" src="https://lucid.app/documents/embeddedchart/1e3b8449-47fa-4e62-8136-6ab34bc47dce" id="~9wQi-cLK.vl"></iframe>
+    </div>
+
+    <h3 id="7.5">FilterController</h3>
+    <div style="width: 480px; height: 360px; margin: 10px; position: relative;">
+        <iframe allowfullscreen frameborder="2" style="width:480px; height:360px" src="https://lucid.app/documents/embeddedchart/1373682a-3d99-42cb-86c8-380dde58c027" id="_UwQkOg2zV81"></iframe>
+    </div>
+
+    <h3 id="7.6">UserController</h3>
+    <div style="width: 640px; height: 480px; margin: 10px; position: relative;">
+        <iframe allowfullscreen frameborder="2" style="width:640px; height:480px" src="https://lucid.app/documents/embeddedchart/2864242b-0af5-4fd4-afea-4b02786d2432" id="cJwQNxfLXi2c"></iframe>
+    </div>
+
+    <h2>Authors</h2>
+    <p>	Zhenyang Ding, Jordan Den Hoed, Lovette Oyewole, Joanne Truong, Sameer Mian</p>
+
+</body>
+</html>
