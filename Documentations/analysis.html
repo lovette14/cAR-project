@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Analysis Document</title>
+    <link rel = "stylesheet" href="style.css">
 </head>
 <body>
     <h1>Analysis Document</h1>
@@ -42,33 +43,69 @@
 
     <h2 id="2">Control Objects</h2>
     <div>
-        <li>ARViewController - </li>
-        <li>CarDBAccessController - </li>
-        <li>DisplayPicController - </li>
-        <li>ExternalLinkController - </li>
-        <li>FilterController - </li>
-        <li>UserController - </li>
+        <li>
+            ARViewController - Gets input from the device’s camera and records a video of the 3D car model being
+            displayed on the screen. This object also deletes this recording or saves it to the user’s local storage
+            depending on the user’s decision.
+        </li>
+        <li>
+            CarDBAccessController - Accesses the car database and returns a list of information about cars. The cars
+            displayed are determined by FilterController.
+        </li>
+        <li>
+            DisplayPicController - Takes the images stored in PicStorage and displays them in SplashView and HomeView.
+        </li>
+        <li>ExternalLinkController - Handles the opening and closing of external link in-app with Mobile Deep Linking.</li>
+        <li>
+            FilterController - Filters information from the car database and outputs its results via the
+            CarDBAccessController, which updates the CarListView.
+        </li>
+        <li>
+            UserController - Takes the information entered into UserAuthenticationView and sends it to Firebase to
+            verify their identity. Takes the information entered into UserRegistrationView and stores it in
+            UserInformation to create a new User object. Replaces user information in UserInformation according to
+            new information entered by the user in UserSettingView. Replaces the password attribute of a given User
+            object when the user enters a new password in UserPasswordResetView.
+        </li>
     </div>
 
     <h2 id="3">Boundary Objects</h2>
     <div>
-        <li>ARCamView - </li>
-        <li>CarRecordView - </li>
-        <li>DetailedCarView - </li>
-        <li>ExternalCarListingView - </li>
-        <li>HomeView - </li>
-        <li>RecordView - </li>
-        <li>SplashView - </li>
-        <li>UserAuthenticationView - </li>
-        <li>UserPasswordResetView - </li>
-        <li>UserRegistrationView - </li>
-        <li>UserSettingsView - </li>
+        <li>
+            ARCamView - UI that opens the user’s camera and displays an AR model of the selected car on a flat surface
+            determined by the user’s camera position. The user can then save and record what they are seeing on their
+            device through the camera.
+        </li>
+        <li>CarListView - UI that allows the user to display the list of cars in the system based on how they filter it.</li>
+        <li>
+            CarRecordView - Shows the users the recording produced from the ARCamView, they can also choose whether to
+            save and/or share the video to other social media.
+        </li>
+        <li>DetailedCarView - UI that shows the user the detailed specifications of the selected car.</li>
+        <li>ExternalCarListingView - UI that shows the user the detailed specifications of the selected car.</li>
+        <li>HomeView - The screen that allows the user to navigate to the ‘sign up’ and ‘sign in’ pages.</li>
+        <li>RecordView - A view where users can review, save or share their recently created recording.</li>
+        <li>
+            SplashView - A logo page displayed while loading the front-end and back-end systems upon the user
+            launching the application.
+        </li>
+        <li>UserAuthenticationView - UI that allows the user to log in and handles third party authentication.</li>
+        <li>UserPasswordResetView - UI that allows a user to change their password. </li>
+        <li>UserRegistrationView - UI that allows the user to create an account in order to sign in.</li>
+        <li>UserSettingsView - UI that allows a user to manipulate their account settings.</li>
     </div>
 
     <h2 id="4">Others</h2>
     <div>
-        <li>Search Listener - </li>
-        <li>User - </li>
+        <li>
+            Mobile Deep Linking - Practice of linking to a specific part of a mobile app instead of launching the app
+            itself. For the Android component, we are considering using
+            <a href="https://developer.android.com/studio/write/app-link-indexing" target="_blank" rel="noopener noreferrer">this</a>
+            method.
+        </li>
+        <li>Search Listener - Works with the filter controller, in order for the user to effectively use the search bar.</li>
+        <li>UI - User interface.</li>
+        <li>User - A person that is using the application.</li>
     </div>
 
     <h2 id="5">Object Diagram</h2>
@@ -114,7 +151,7 @@
     </div>
 
     <h2>Authors</h2>
-    <p>	Zhenyang Ding, Jordan Den Hoed, Lovette Oyewole, Joanne Truong, Sameer Mian</p>
+    <p>	Zhenyang Ding, Jordan Den Hoed, Lovette Oyewole, Joanne Truong, Sameer Mian, Hussain Phalasiya,Muhammed Mirza,</p>
 
 </body>
 </html>
