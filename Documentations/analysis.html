@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Analysis Document</title>
@@ -28,6 +30,7 @@
                 <li><a href="#7.6">UserController</a></li>
             </ul>
         </li>
+        <li><a href="#8">Data Dictionary</a></li>
     </ul>
     <h2 id="1">Entity Objects</h2>
     <div>
@@ -76,13 +79,13 @@
             determined by the user’s camera position. The user can then save and record what they are seeing on their
             device through the camera.
         </li>
-        <li>CarListView - UI that allows the user to display the list of cars in the system based on how they filter it.</li>
         <li>
-            CarRecordView - Shows the users the recording produced from the ARCamView, they can also choose whether to
+            CameraRecordView' - Shows the users the recording produced from the ARCamView, they can also choose whether to
             save and/or share the video to other social media.
         </li>
+        <li>CarListView - UI that allows the user to display the list of cars in the system based on how they filter it.</li>
         <li>DetailedCarView - UI that shows the user the detailed specifications of the selected car.</li>
-        <li>ExternalCarListingView - UI that shows the user the detailed specifications of the selected car.</li>
+        <li>ExternalCarListingView - UI that displays the car listings on autotrader.ca.</li>
         <li>HomeView - The screen that allows the user to navigate to the ‘sign up’ and ‘sign in’ pages.</li>
         <li>RecordView - A view where users can review, save or share their recently created recording.</li>
         <li>
@@ -148,6 +151,63 @@
     <h3 id="7.6">UserController</h3>
     <div style="width: 640px; height: 480px; margin: 10px; position: relative;">
         <iframe allowfullscreen frameborder="2" style="width:640px; height:480px" src="https://lucid.app/documents/embeddedchart/2864242b-0af5-4fd4-afea-4b02786d2432" id="cJwQNxfLXi2c"></iframe>
+    </div>
+
+    <h2 id="8">Data Dictionary</h2>
+    <div>
+        <li>ARCamView - UI that opens the user’s camera and displays an AR model of the selected car. See ARCamView definition under Boundary Objects for further explanation.</li>
+
+        <li>ARViewController - Records car model being displayed and can delete/save this video. See ARViewController definition under Control Objects for further explanation.</li>
+
+        <li>CameraRecordView - Shows the users the recording produced from the ARCamView, they can also choose whether to save and/or share the video to other social media.</li>
+
+        <li>CarDatabase - Stores all needed car information. See CarDatabase definition under Entity Objects for further explanation.</li>
+
+        <li>CarDBAccessController - Accesses the car database and returns a list of information about cars. The cars displayed are determined by FilterController.</li>
+
+        <li>CarListView - UI that allows the user to display the list of cars in the system based on how they filter it.</li>
+
+        <li>DetailedCarView - UI that shows the user the detailed specifications of the selected car.</li>
+
+        <li>DisplayPicController - Takes the images stored in PicStorage and displays them in SplashView and HomeView.</li>
+
+        <li>ExternalCarListingView - UI that displays the car listings on autotrader.ca.</li>
+
+        <li>ExternalLinkController - Handles the opening and closing of external link in-app with Mobile Deep Linking.</li>
+
+        <li>FilterController - Filters information from the car database and outputs its results via the CarDBAccessController, which updates the CarListView.</li>
+
+        <li>HomeView - The screen that allows the user to navigate to the ‘sign up’ and ‘sign in’ pages.</li>
+
+        <li>LocalRecordStorage - The location in user’s phone storage where completed AR recordings are stored.</li>
+
+        <li>Mobile Deep Linking - Practice of linking to a specific part of a mobile app instead of launching the app itself. See Mobile Deep Linking definition under Others for further explanation.</li>
+
+        <li>PicStorage - A directory that has images needed for the home view and the splash view.</li>
+
+        <li>RecordView - A view where users can review, save or share their recently created recording.</li>
+
+        <li>Search Listener - Works with the filter controller, in order for the user to effectively use the search bar.</li>
+
+        <li>SplashView - A logo page displayed while loading the front-end and back-end systems upon the user launching the application.</li>
+
+        <li>UI - User interface.</li>
+
+        <li>User - A person that is using the application.</li>
+
+        <li>UserAuthenticationView - UI that allows the user to log in and handles third party authentication.</li>
+
+        <li>
+            UserController - Takes the information entered into UserAuthenticationView and sends it to Firebase to verify their identity. See UserController definition under Control Objects for further explanation.
+        </li>
+
+        <li>UserInformation - A Firebase database that stores the information of the user.</li>
+
+        <li>UserPasswordResetView - UI that allows a user to change their password.</li>
+
+        <li>UserRegistrationView - UI that allows the user to create an account in order to sign in.</li>
+
+        <li>UserSettingsView - UI that allows a user to manipulate their account settings.</li>
     </div>
 
     <h2>Authors</h2>
