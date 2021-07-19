@@ -3,8 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <title>Design</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
 </head>
+
 <body>
+<h1>Table of Contents</h1>
+<ul>
+    <li>
+        <a href="#1">1 Introduction</a>
+        <ul>
+            <li> <a href="#1.1">1.1 Purpose</a> </li>
+            <li> <a href="#1.2">1.2 Scope</a>  </li>
+            <li> <a href="#1.3">1.3 Definitions</a> </li>
+            <li> <a href="#1.4">1.4 References</a> </li>
+            <li> <a href="#1.5">1.5 Overview</a> </li>
+        </ul>
+    </li>
+    <li>
+        <a href="#2">2 Planned Implementation</a>
+        <ul>
+            <li> <a href="#2.1">2.1 Structural Breakdown of Implementation</a> </li>
+            <ul>
+                <li> <a href="#2.1.1">2.1.1 User Interface Technical Design</a> </li>
+                <li> <a href="#2.1.2">2.1.2 Database Technical Design</a> </li>
+                <li> <a href="#2.1.3">2.1.3 AR Technical Design</a> </li>
+            </ul>
+            <li> <a href="#2.2">2.2 Integration</a> </li>
+        </ul>
+    </li>
+    <li> <a href="#3">3 Interface Description</a>
+        <ul>
+            <li> <a href="#3.1">3.1 Colour Guidelines</a> </li>
+            <li> <a href="#3.2">3.2 Font Guidelines</a> </li>
+            <ul>
+                <li> <a href="#3.2.1">3.2.1 App Icon</a> </li>
+            </ul>
+            <li> <a href="#3.3">3.3 Module Interface</a> </li>
+            <ul>
+                <li> <a href="#3.3.1">3.3.1 HomeView</a> </li>
+                <li> <a href="#3.3.2">3.3.2 UserRegistrationView</a> </li>
+                <li> <a href="#3.3.3">3.3.3 UserAuthenticationView</a> </li>
+                <li> <a href="#3.3.4">3.3.4 CarListView</a> </li>
+                <li> <a href="#3.3.5">3.3.5 DetailedCarView</a> </li>
+                <li> <a href="#3.3.6">3.3.6 ARCamView</a> </li>
+                <li> <a href="#3.3.7">3.3.7 UserSettingsView</a> </li>
+                <li> <a href="#3.3.8">3.3.8 ExternalCarListingView </a> </li>
+                <li> <a href="#3.3.9">3.3.9 CarRecordView</a> </li>
+            </ul>
+        </ul>
+    </li>
+    <li> <a href="#4">4 Class Diagrams</a> </li>
+    <ul>
+        <li><a href="#4.1">4.1 Model Class Diagrams</a></li>
+        <ul>
+            <li><a href="#4.1.1">Top Level View</a></li>
+            <li><a href="#4.1.2">Detailed Class Diagrams</a></li>
+            <li><a href="#4.1.3">ARKit and ARCore</a></li>
+        </ul>
+    </ul>
+    <li><a href="#5">Data Dictionary</a></li>
+</ul>
 <h1 id="1">1. Introduction<strong> </strong></h1>
 <p>cAR is a camera application that leverages augmented reality technology to  provide a real-time 3-D model of sports cars within the camera view of a user’s living room or garage. cAR allows users to create an account on the application, and pick any car from the internal database to view.</p>
 
@@ -17,7 +79,7 @@
 <p>The cAR app is an iOS/Android application that was developed to generate AR videos of a car within a user’s camera application. The document is aimed at a developer with a background in Android and iOS development, who wishes to develop cAR from scratch.  </p>
 
 
-<h2 id="1.2">1.3 Definitions </h2>
+<h2 id="1.3">1.3 Definitions </h2>
 <p>The following common acronyms are used in this document. Any acronym not mentioned here will be present in the Data Dictionary. </p>
 <li>SDD: Software Design Document</li>
 <li>AR: Augmented Reality.</li>
@@ -28,13 +90,13 @@
 <h2 id="1.4">1.4 References </h2>
 <p>Below is a comprehensive list of documents that were used as references to create the cAR software design document.</p>
 <li>IEEE. IEEE Std 1016-1998 IEEE Recommended Practice for Software Design Descriptions. IEEE Computer Society, 1998</li>
-<li>PartyAll Software Design Description  http://partyall-docs.herokuapp.com/docs/partyall-design.html</li>
-<li>Shout! Design       https://bohr.wlu.ca/cp317/shout/design-master/</li>
-<li>cAR Analysis document</li>
-<li>cAR Requirement Document</li>
-<li>SCNRecorder API: ARKit Recording <u><a href="https://github.com/gorastudio/SCNRecorder" rel="nofollow">https://github.com/gorastudio/SCNRecorder</a></u></li>
-<li>Apple ARKit Documentation: <u><a href="https://developer.apple.com/documentation/arkit" rel="nofollow">https://developer.apple.com/documentation/arkit</a></u></li>
-<li>Google ARCore Documentation: <u><a href="https://developers.google.com/ar/reference" rel="nofollow">https://developers.google.com/ar/reference</a></u></li></ul>
+<li><a href ="http://partyall-docs.herokuapp.com/docs/partyall-design.html" rel="nofollow">PartyAll Design Document</a></li>
+<li><a href = "https://bohr.wlu.ca/cp317/shout/design-master/" rel="nofollow">Shout! Design Document </a></li>
+<li><a href="analysis.html" rel="nofollow">cAR Analysis document</a> </li>
+<li><a href="requirements.html" rel="nofollow">cAR Requirement Document</a></li>
+<li><u><a href="https://github.com/gorastudio/SCNRecorder" rel="nofollow">SCNRecorder API: ARKit Recording </a></u></li>
+<li><u><a href="https://developer.apple.com/documentation/arkit" rel="nofollow">Apple ARKit Documentation </a></u></li>
+<li><u><a href="https://developers.google.com/ar/reference" rel="nofollow">Google ARCore Documentation</a></u></li></ul>
 
 
 <h2 id="1.5">1.5 Overview</h2>
@@ -65,22 +127,474 @@
 <p>On the AR side, due to the platform dependency of the ARKit (iOS) and ARCore (AndroidOS) APIs, the implementation of the AR Camera projection features, as well as their recording capabilities, will be handled by separate iOS and Android teams. An effort will be made to use existing Flutter support for both iOS and AndroidOS AR APIs to simplify this process. However, due to limited support for this functionality, the majority of AR development will be done through Swift and Xcode on iOS and Kotlin and Android Studio for AndroidOS. To support parallel development, the AR team will use a static Car object to implement and develop AR features until the Firebase Car Database features can be integrated.</p>
 
 
-<h1 id="3">3.  Interface Description</h1>
+<h1 id="3">3. Interface Description</h1>
 
 <h2 id="3.1">3.1 Font Guidelines</h2>
+<table style="width:50%">
+    <tr>
+        <th>Colour</th>
+        <th>Hex Code</th>
+        <th>Usage</th>
+    </tr>
+    <tr>
+        <td style="background-color:#727272;"></td>
+        <td>727272</td>
+        <td>
+            <ul>
+                <li>HomeView Text</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td style="background-color:#7e7c7c;"></td>
+        <td>7e7c7c</td>
+        <td>
+            <ul>
+                <li>Apple Button</li>
+                <li>Continue as Guest Button</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td style="background-color:#b9b9b9;"></td>
+        <td>b9b9b9</td>
+        <td>
+            <ul>
+                <li>Text</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td style="background-color:#182caf;"></td>
+        <td>182caf</td>
+        <td>
+            <ul>
+                <li>Headers</li>
+                <li>Button Text</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td style="background-color:#2544db;"></td>
+        <td>2544db</td>
+        <td>
+            <ul>
+                <li>Facebook button </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td style="background-color:#4368c7;"></td>
+        <td>4368c7</td>
+        <td>
+            <ul>
+                <li>More Info button</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td style="background-color:#7c6eff;"></td>
+        <td>7c6eff</td>
+        <td>
+            <ul>
+                <li>Icons</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td style="background-color:#7364ff;"></td>
+        <td>7364ff</td>
+        <td>
+            <ul>
+                <li>Background</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td style="background-color:#a39fff;"></td>
+        <td>a39fff</td>
+        <td>
+            <ul>
+                <li>AR button</li>
+                <li>Favourited Icon</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td style="background-color:#d20000;"></td>
+        <td>d20000</td>
+        <td>
+            <ul>
+                <li>Record Icon</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td style="background-color:#eb3939;"></td>
+        <td>eb3939</td>
+        <td>
+            <ul>
+                <li>Google Button</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td style="background-color:#f0c418;"></td>
+        <td>f0c418</td>
+        <td>
+            <ul>
+                <li>Favourites Stars</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td style="background-color:#ffffff;"></td>
+        <td>ffffff</td>
+        <td>
+            <ul>
+                <li>Sign in button</li>
+                <li>Background</li>
+                <li>Favourite and Setting icons</li>
+                <li>Search Bar</li>
+                <li>DetailCarView Header</li>
+                <li>Mute Button</li>
+                <li>Record Button Background</li>
+            </ul>
+        </td>
+    </tr>
+</table>
+
+<h2 id="3.2">3.2 Font Guidelines</h2>
 <p>The main font used throughout the app will be Segoe UI and its derivatives, depending on the requirement for stronger cases such as bolding.</p>
+
+<h3 id="3.2.1">3.2.1 App Icon</h3>
+
+<div><img src="images/3.2.1.png" /></div>
+
+<h2 id="3.3">3.3 Module Interface </h2>
+
+<h3 id="3.3.1">3.3.1 HomeView</h3>
+<div><img src="images/3.3.png"/></div>
+
+<table style="width:50%">
+    <tr>
+        <th>Field</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>SignUpButton</td>
+        <td>Input Button</td>
+        <td>Links User to UserRegistrationView</td>
+    </tr>
+    <tr>
+        <td>SignInButton</td>
+        <td>Input Button</td>
+        <td>Links User to UserAuthenticationView</td>
+    </tr>
+    <tr>
+        <td>GuestButton</td>
+        <td>Input Button</td>
+        <td>Links User to CarListView</td>
+    </tr>
+
+</table>
+
+<h3 id="3.3.2">3.3.2 UserRegistrationView</h3>
+<div><img src="images/3.3.2.png"/></div>
+<table style="width:50%">
+    <tr>
+        <th>Field</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>FullName</td>
+        <td>Input Text</td>
+        <td>Name of User</td>
+    </tr>
+    <tr>
+        <td>EmailCreation</td>
+        <td>Input Text</td>
+        <td>Email used for login</td>
+    </tr>
+    <tr>
+        <td>PasswordCreation</td>
+        <td>Input Password</td>
+        <td>Password for the account</td>
+    </tr>
+    <tr>
+        <td>ConfirmPassword</td>
+        <td>Input Password</td>
+        <td>Confirm Password</td>
+    </tr>
+    <tr>
+        <td>SignUpButton</td>
+        <td>Input Button</td>
+        <td>Links User to CarListView</td>
+    </tr>
+    <tr>
+        <td>FacebookSignUp</td>
+        <td>Input Button</td>
+        <td>Links User to Facebook for sign up</td>
+    </tr>
+    <tr>
+        <td>GoogleSignUp</td>
+        <td>Input Button</td>
+        <td>Links User to Google for sign up</td>
+    </tr>
+    <tr>
+        <td>AppleIdSignUp</td>
+        <td>Input Button</td>
+        <td>Links User to Apple for sign up</td>
+    </tr>
+    <tr>
+        <td>SignInButton</td>
+        <td>Input Button</td>
+        <td>Links User to UserAuthenticationView</td>
+    </tr>
+
+</table>
+
+<h3 id="3.3.3">3.3.3 UserAuthenticationView</h3>
+<div><img src="images/3.3.3.png"/></div>
+<table style="width:50%">
+    <tr>
+        <th>Field</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>Input Text</td>
+        <td>Email of an existing account</td>
+    </tr>
+    <tr>
+        <td>Password</td>
+        <td>Input Password</td>
+        <td>Password for existing account</td>
+    </tr>
+    <tr>
+        <td>SignInButton</td>
+        <td>Input Button</td>
+        <td>Links User to CarListView</td>
+    </tr>
+    <tr>
+        <td>FacebookSignIn</td>
+        <td>Input Button</td>
+        <td>Links User to Facebook for sign in</td>
+    </tr>
+    <tr>
+        <td>GoogleSignIn</td>
+        <td>Input Button</td>
+        <td>Links User to Google for sign in</td>
+    </tr>
+    <tr>
+        <td>AppleIdSignIn</td>
+        <td>Input Button</td>
+        <td>Links User to Apple for sign up</td>
+    </tr>
+    <tr>
+        <td>SignUpButton</td>
+        <td>Input Button</td>
+        <td>Links User to UserRegistrationView</td>
+    </tr>
+
+</table>
+
+<h3 id="3.3.4">3.3.4 CarListView</h3>
+<div><img src="images/3.3.4.png"/></div>
+<table style="width:50%">
+    <tr>
+        <th>Field</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>FavouritesButton</td>
+        <td>Input Button</td>
+        <td>Filters the list of Cars depending on favourites</td>
+    </tr>
+    <tr>
+        <td>SettingsButton</td>
+        <td>Input Button</td>
+        <td>Links User to UserSettingsView</td>
+    </tr>
+    <tr>
+        <td>CarButton</td>
+        <td>Input Button</td>
+        <td>Links User to DetailedCarView</td>
+    </tr>
+    <tr>
+        <td>Search</td>
+        <td>Input Text</td>
+        <td>Filters the list of Cars depending on search result</td>
+    </tr>
+
+</table>
+
+<h3 id="3.3.5">3.3.5 DetailedCarView</h3>
+<div><img src="images/3.3.5.png"/></div>
+<table style="width:50%">
+    <tr>
+        <th>Field</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>ReturnButton</td>
+        <td>Input Button</td>
+        <td>Links User to CarListView</td>
+    </tr>
+    <tr>
+        <td>MoreInfoButton</td>
+        <td>Input Button</td>
+        <td>Shows the User more info about the chosen car</td>
+    </tr>
+    <tr>
+        <td>AddtoFavouritesButton</td>
+        <td>Input Button</td>
+        <td>Adds the car to the Users favourites</td>
+    </tr>
+    <tr>
+        <td>ARviewButton</td>
+        <td>Input Button</td>
+        <td>Links the User to ARCamView</td>
+    </tr>
+
+</table>
+
+<h3 id="3.3.6">3.3.6 ARCamView</h3>
+<div><img src="images/3.3.6.png"/></div>
+<table style="width:50%">
+    <tr>
+        <th>Field</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>RecordButton</td>
+        <td>Input Button</td>
+        <td>Starts the camera and records a video</td>
+    </tr>
+    <tr>
+        <td>SoundButton</td>
+        <td>Input Button</td>
+        <td>Mutes and unmutes sound</td>
+    </tr>
+    <tr>
+        <td>ReturnButton</td>
+        <td>Input Button</td>
+        <td>Links the User to DetailedCareView</td>
+    </tr>
+</table>
+
+<h3 id="3.3.7">3.3.7 UserSettingsView</h3>
+<div><img src="images/3.3.7.png"/></div>
+<table style="width:50%">
+    <tr>
+        <th>Field</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>ReturnButton</td>
+        <td>Input Button</td>
+        <td>Links User to CarListView</td>
+    </tr>
+    <tr>
+        <td>UpdatePassword</td>
+        <td>Input Button</td>
+        <td>Give User the option to update their password</td>
+    </tr>
+    <tr>
+        <td>NotificationsButton</td>
+        <td>Input Button</td>
+        <td>Allows User to modify their notification settings</td>
+    </tr>
+    <tr>
+        <td>AboutButton</td>
+        <td>Input Button</td>
+        <td>Allows User to see description of cAR</td>
+    </tr>
+    <tr>
+        <td>HelpButton</td>
+        <td>Input Button</td>
+        <td>Allows User to contact a developer for help</td>
+    </tr>
+</table>
+
+<h3 id="3.3.8">3.3.8 ExternalCarListingView </h3>
+
+<table style="width:50%">
+    <tr>
+        <th>Field</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>ExitButton</td>
+        <td>Input Button</td>
+        <td>Links User back to DetailedCarView</td>
+    </tr>
+    <tr>
+        <td>EllipsisButton</td>
+        <td>Input Button</td>
+        <td>Give the user the option to open the page in another browser, copy or share the link</td>
+    </tr>
+    <tr>
+        <td>RefreshButton</td>
+        <td>Input Button</td>
+        <td>Gives the user a chance to refresh the page</td>
+    </tr>
+</table>
+
+<h3 id="3.3.9">3.3.9 CarRecordView</h3>
+
+<table style="width:50%">
+    <tr>
+        <th>Field</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>ReturnButton</td>
+        <td>Input Button</td>
+        <td>Links User back to DetailedCarView</td>
+    </tr>
+    <tr>
+        <td>AddAudioButton</td>
+        <td>Input Button</td>
+        <td>Give the user the option to add audio to the video</td>
+    </tr>
+    <tr>
+        <td>SaveButton</td>
+        <td>Input Button</td>
+        <td>Gives the user a chance to save the recording</td>
+    </tr>
+    <tr>
+        <td>ShareButton</td>
+        <td>Input Button</td>
+        <td>Lets the user share video directly from the app</td>
+    </tr>
+</table>
 
 
 <h1 id="4">4 Class Diagrams </h1>
 <h2 id="4.1">4.1 Model Class Diagrams</h2>
+
+<h3 id="4.1.1">Top Level View</h3>
+<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="2" style="width:640px; height:480px" src="https://lucid.app/documents/embeddedchart/2cec24cb-af05-432b-b9be-64423280a63b" id="5paWLVz-8v8c"></iframe></div>
+
+<h3 id="4.1.2">Detailed Class Diagrams</h3>
 <div style="width: 1024px; height: 1024px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="2" style="width:1024px; height:1024px" src="https://lucid.app/documents/embeddedchart/2e4af4a2-f99a-4de0-8bf0-cfb95c2d8939" id="1Z0VcHJjeTEp"></iframe></div>
 
 
-<h3>ARKit and ARCore</h3>
+<h3 id="4.1.3">ARKit and ARCore</h3>
 
 <div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="2" style="width:640px; height:480px" src="https://lucid.app/documents/embeddedchart/3c56eee7-9a75-4170-97e1-c2dc9758b734" id="M30VIP58-~P7"></iframe></div>
 
-<h1>Data Dictionary</h1>
+<h1 id="5">Data Dictionary</h1>
 <p>AccessARView(): The method necessary for letting an AR view to be called in the details page.</p>
 
 <p>AccessCarList() (Dart method): Changes user view to CarListView.</p>
@@ -544,10 +1058,9 @@
 
 <p>WebviewExtLaunch(): The method used to open the external link of the car object</p>
 
-
 <h4>Notes</h4>
-<ul><li>This is a conditional-if controller: it only activates if there is an inherent need for a filter/search system.</li></ul>
-<li>Application is AR Required therefore ArCoreApk.checkAvailability() must be used to check ARCore support and install status, and ArCoreApk.requestInstall() must be used to install(or update) Google Play Services for AR</li></ul>
+<li>FilterController is a conditional-if controller: it only activates if there is an inherent need for a filter/search system.</li>
+<li>Application is AR Required therefore ArCoreApk.checkAvailability() must be used to check ARCore support and install status, and ArCoreApk.requestInstall() must be used to install(or update) Google Play Services for AR.</li></ul>
 
 
 <h2>Authors</h2>
