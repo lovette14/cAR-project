@@ -11,7 +11,8 @@
 </head>
 
 <body>
-<h1>Table of Contents</h1>
+<h1>Design</h1>
+<h2>Table of Contents</h2>
 <ul>
     <li>
         <a href="#1">1 Introduction</a>
@@ -67,19 +68,19 @@
     </ul>
     <li><a href="#5">Data Dictionary</a></li>
 </ul>
-<h1 id="1">1. Introduction<strong> </strong></h1>
+<h2 id="1">1. Introduction<strong> </strong></h2>
 <p>cAR is a camera application that leverages augmented reality technology to  provide a real-time 3-D model of sports cars within the camera view of a user’s living room or garage. cAR allows users to create an account on the application, and pick any car from the internal database to view.</p>
 
 
-<h2 id="1.1">1.1 Purpose</h2>
+<h3 id="1.1">1.1 Purpose</h3>
 <p>This document describes the software design and architecture of cAR application and is intended to allow any developer to reproduce the cAR application from scratch.</p>
 
 
-<h2 id="1.2">1.2 Scope</h2>
+<h3 id="1.2">1.2 Scope</h3>
 <p>The cAR app is an iOS/Android application that was developed to generate AR videos of a car within a user’s camera application. The document is aimed at a developer with a background in Android and iOS development, who wishes to develop cAR from scratch.  </p>
 
 
-<h2 id="1.3">1.3 Definitions </h2>
+<h3 id="1.3">1.3 Definitions </h3>
 <p>The following common acronyms are used in this document. Any acronym not mentioned here will be present in the Data Dictionary. </p>
 <li>SDD: Software Design Document</li>
 <li>AR: Augmented Reality.</li>
@@ -87,7 +88,7 @@
 <li>UI: User Interface</li></ul>
 
 
-<h2 id="1.4">1.4 References </h2>
+<h3 id="1.4">1.4 References </h3>
 <p>Below is a comprehensive list of documents that were used as references to create the cAR software design document.</p>
 <li>IEEE. IEEE Std 1016-1998 IEEE Recommended Practice for Software Design Descriptions. IEEE Computer Society, 1998</li>
 <li><a href ="http://partyall-docs.herokuapp.com/docs/partyall-design.html" rel="nofollow">PartyAll Design Document</a></li>
@@ -99,37 +100,37 @@
 <li><u><a href="https://developers.google.com/ar/reference" rel="nofollow">Google ARCore Documentation</a></u></li></ul>
 
 
-<h2 id="1.5">1.5 Overview</h2>
+<h3 id="1.5">1.5 Overview</h3>
 <p>The SDD consists of a detailed description of cAR’s software architecture. This architecture can be classified into two categories, the frontend, and the backend. </p>
 
 <p>The frontend and backend software architecture is described using UML diagrams. A data dictionary further elaborates and describes the purpose of each attribute and method found inside the respective class diagrams.</p>
 
 
-<h1 id="2">2.  Planned Implementation</h1>
-<h2 id="2.1">2.1 Structural Breakdown of Implementation</h2>
-<h3 id="2.1.1">2.1.1 User Interface Technical Design</h3>
+<h2 id="2">2.  Planned Implementation</h2>
+<h3 id="2.1">2.1 Structural Breakdown of Implementation</h3>
+<h4 id="2.1.1">2.1.1 User Interface Technical Design</h4>
 <p>The user interface for the application is designed using two major tools: Adobe Xd for rapid prototyping, and the Google Flutter API for cross-platform uniform implementation. The layout and design of the interface are written in Dart, the language used by the Flutter API. This Dart code is then converted by the API into Swift and XML code for iOS devices, and Java/Kotlin and XML code for Android devices. The packages for each OS are then exported and made available for installation.</p>
 
 <p>Due to the vast amount of screen size options available for Android devices, an explicit decision to render the UI for devices with an 18:9 aspect ratio screen is due to time constraints. This decision was made keeping in mind the fairly strenuous hardware requirements for running an AR application. Since almost all newer (and hence, more powerful and compatible) Android devices are available in an 18:9 aspect ratio, we have decided to target this screen ratio moving forward.</p>
 
-<h3 id="2.1.2">2.1.2 Database Technical Design</h3>
+<h4 id="2.1.2">2.1.2 Database Technical Design</h4>
 <p>Initially, the project design proposal was to use two different database systems: Google Firebase API to manage user authentication and maintenance, and MySQL to manage the requirement of a Car database. Upon further investigation, it was found that the Firebase API proved a superior alternative for the database needs of the Car database as compared to MySQL. This was due to its ability to provide a cloud-based, easily updatable solution to entering new cars into the database, and the ability to use an offline version of the database in case network connectivity was unavailable, thus removing the possible need for an internet connection upon app reuse. Another advantage was the Flutter API providing in-built support for all Firebase features, significantly reducing the complexity of implementing any required database features. These advantages, combined with the reduced complexity of using only one database solution over two, led us to focus on using the Firebase API as our sole tool for both the User and Car databases while eliminating MySQL as a workflow tool.</p>
 
-<h3 id="2.1.3">2.1.3 AR Technical Design</h3>
+<h4 id="2.1.3">2.1.3 AR Technical Design</h4>
 <p>The AR technical design was handled across two teams, iOS and Android. Both platforms require different implementations of the AR toolkit. On the iOS side, we plan on implementing the ARKit API, which combines the graphical capabilities of the SceneKit API to render 3D car models in a Camera scene. This API allows us to create powerful 3D AR renders using native iOS hardware without compromising performance. One limitation of ARKit is the lack of an available first-party implementation of a recording feature; this issue is resolved by using an external open-source implementation of this feature called SCNRecorder, which we list in Section 1.4.</p>
 <p>
   On the AndroidOS side, we will use a similar implementation of the ARCore API designed by Google. ARCore also has a recording trigger built-in, so there is no inherent need for any external solutions, thus making ARCore a powerful self-contained system for not only displaying AR projections but also recording and reviewing them. As for the sharing and saving capabilities, Flutter allows us to implement a ‘Share’ functionality in our user interface, which provides a cross-platform solution to sharing or saving user recordings managed by the OS itself.</p>
 
 
-<h2 id="2.2">2.2 Integration</h2>
+<h3 id="2.2">2.2 Integration</h3>
 <p>The front-end team is responsible for the development, implementation, and testing of the user interface and all responsive elements. A bottom-up approach will be used to develop the skeletal layout of the user interface using Dart with the Flutter API. Once the pre-designed prototype of the app is agreed upon, members of the front-end team will begin to integrate the app elements together to form a base for back-end integration. </p>
 <p>Once the UI is developed, the back-end team will work with the front-end team to implement Firebase features into the pre-existing UI skeleton. This involves user authentication as well as the Car database features. Due to the strong flexibility of Flutter’s Firebase implementation, this step of the back-end process will not require platform-dependent development. </p>
 <p>On the AR side, due to the platform dependency of the ARKit (iOS) and ARCore (AndroidOS) APIs, the implementation of the AR Camera projection features, as well as their recording capabilities, will be handled by separate iOS and Android teams. An effort will be made to use existing Flutter support for both iOS and AndroidOS AR APIs to simplify this process. However, due to limited support for this functionality, the majority of AR development will be done through Swift and Xcode on iOS and Kotlin and Android Studio for AndroidOS. To support parallel development, the AR team will use a static Car object to implement and develop AR features until the Firebase Car Database features can be integrated.</p>
 
 
-<h1 id="3">3. Interface Description</h1>
+<h2 id="3">3. Interface Description</h2>
 
-<h2 id="3.1">3.1 Font Guidelines</h2>
+<h3 id="3.1">3.1 Font Guidelines</h3>
 <table style="width:50%">
     <tr>
         <th>Colour</th>
@@ -264,16 +265,16 @@
     </tr>
 </table>
 
-<h2 id="3.2">3.2 Font Guidelines</h2>
+<h3 id="3.2">3.2 Font Guidelines</h3>
 <p>The main font used throughout the app will be Segoe UI and its derivatives, depending on the requirement for stronger cases such as bolding.</p>
 
-<h3 id="3.2.1">3.2.1 App Icon</h3>
+<h4 id="3.2.1">3.2.1 App Icon</h4>
 
 <div><img src="images/3.2.1.png" /></div>
 
-<h2 id="3.3">3.3 Module Interface </h2>
+<h3 id="3.3">3.3 Module Interface </h3>
 
-<h3 id="3.3.1">3.3.1 HomeView</h3>
+<h4 id="3.3.1">3.3.1 HomeView</h4>
 <div><img src="images/3.3.png"/></div>
 
 <table style="width:50%">
@@ -300,7 +301,7 @@
 
 </table>
 
-<h3 id="3.3.2">3.3.2 UserRegistrationView</h3>
+<h4 id="3.3.2">3.3.2 UserRegistrationView</h4>
 <div><img src="images/3.3.2.png"/></div>
 <table style="width:50%">
     <tr>
@@ -356,7 +357,7 @@
 
 </table>
 
-<h3 id="3.3.3">3.3.3 UserAuthenticationView</h3>
+<h4 id="3.3.3">3.3.3 UserAuthenticationView</h4>
 <div><img src="images/3.3.3.png"/></div>
 <table style="width:50%">
     <tr>
@@ -402,7 +403,7 @@
 
 </table>
 
-<h3 id="3.3.4">3.3.4 CarListView</h3>
+<h4 id="3.3.4">3.3.4 CarListView</h4>
 <div><img src="images/3.3.4.png"/></div>
 <table style="width:50%">
     <tr>
@@ -433,7 +434,7 @@
 
 </table>
 
-<h3 id="3.3.5">3.3.5 DetailedCarView</h3>
+<h4 id="3.3.5">3.3.5 DetailedCarView</h4>
 <div><img src="images/3.3.5.png"/></div>
 <table style="width:50%">
     <tr>
@@ -464,7 +465,7 @@
 
 </table>
 
-<h3 id="3.3.6">3.3.6 ARCamView</h3>
+<h4 id="3.3.6">3.3.6 ARCamView</h4>
 <div><img src="images/3.3.6.png"/></div>
 <table style="width:50%">
     <tr>
@@ -489,7 +490,7 @@
     </tr>
 </table>
 
-<h3 id="3.3.7">3.3.7 UserSettingsView</h3>
+<h4 id="3.3.7">3.3.7 UserSettingsView</h4>
 <div><img src="images/3.3.7.png"/></div>
 <table style="width:50%">
     <tr>
@@ -524,7 +525,7 @@
     </tr>
 </table>
 
-<h3 id="3.3.8">3.3.8 ExternalCarListingView </h3>
+<h4 id="3.3.8">3.3.8 ExternalCarListingView </h4>
 
 <table style="width:50%">
     <tr>
@@ -549,7 +550,7 @@
     </tr>
 </table>
 
-<h3 id="3.3.9">3.3.9 CarRecordView</h3>
+<h4 id="3.3.9">3.3.9 CarRecordView</h4>
 
 <table style="width:50%">
     <tr>
@@ -580,490 +581,27 @@
 </table>
 
 
-<h1 id="4">4 Class Diagrams </h1>
-<h2 id="4.1">4.1 Model Class Diagrams</h2>
+<h2 id="4">4 Class Diagrams </h2>
+<h3 id="4.1">4.1 Model Class Diagrams</h3>
 
-<h3 id="4.1.1">Top Level View</h3>
+<h4 id="4.1.1">Top Level View</h4>
 <div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="2" style="width:640px; height:480px" src="https://lucid.app/documents/embeddedchart/2cec24cb-af05-432b-b9be-64423280a63b" id="5paWLVz-8v8c"></iframe></div>
 
-<h3 id="4.1.2">Detailed Class Diagrams</h3>
+<h4 id="4.1.2">Detailed Class Diagrams</h4>
 <div style="width: 1024px; height: 1024px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="2" style="width:1024px; height:1024px" src="https://lucid.app/documents/embeddedchart/2e4af4a2-f99a-4de0-8bf0-cfb95c2d8939" id="1Z0VcHJjeTEp"></iframe></div>
 
 
-<h3 id="4.1.3">ARKit and ARCore</h3>
+<h4 id="4.1.3">ARKit and ARCore</h4>
 
 <div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="2" style="width:640px; height:480px" src="https://lucid.app/documents/embeddedchart/3c56eee7-9a75-4170-97e1-c2dc9758b734" id="M30VIP58-~P7"></iframe></div>
 
-<h1 id="5">Data Dictionary</h1>
-<p>AccessARView(): The method necessary for letting an AR view to be called in the details page.</p>
+<h2 id="5">Data Dictionary</h2>
+<p>
+    <a href="dataDic.html">Data Dictionary</a>
+</p>
 
-<p>AccessCarList() (Dart method): Changes user view to CarListView.</p>
 
-<p>AccessDetailedCar(SelectedCar): This function uses the SelectedCar object assigned to the CarList UI element on the CarListView to open a DetailedCarView containing information from the CarInformation object to the user.</p>
-<p>AccessExternalCar(CarInformation CarListingInfo): A public method that accesses the Autotrader link attribute in CarListingInfo and uses it to open a webpage using ExternalLinkController. Returns null.</p>
-
-<p>AccessHome(boolean PageLoaded): Public function that directs user to HomeView if LoggedIn is false. Returns null.</p>
-
-<p>AccessPasswordReset()  (Dart method): Changes user view to UserPasswordResetView.</p>
-
-<p>AccessUserAuth() or AccessUserAuth(Boolean PasswordChangeChk) (Dart method): Changes user view to UserAuthenticationView.</p>
-
-<p>AccessUserSettings(): Sends the user to the UserSettingsView.</p>
-
-<p>AddToFavourites() (Dart method): Adds a car listing into the user favorites list.</p>
-
-<p>addTrack(Track track): configures and adds a Track for recording.</p>
-
-<p>AllCars (Dart CarInformation ARRAY): An array containing all the cars in the Car Database.</p>
-
-<p>AllCars (Dart UserInformationObject ARRAY): An array of CarInformation class objects.</p>
-
-<p>AllCars: An array containing all UserInformationObject objects in CarDatabase.</p>
-
-<p>AnchorPt (Swift var): This is an object containing the details of the anchor points of the flat plane surface from which the 3D area in a user’s environment is calculated.</p>
-
-<p>applicationActivity: your application’s current activity. Used for launching an intent to display the installation UI.</p>
-
-<p>ARAnchor (Swift class): This class contains information about geometrical anchor points based on a 3-dimensional system in a visual map.</p>
-
-<p>ARCamView (Swift class): This class pertains to the view in which the user can project the 3D car model to their camera feed and trigger a recording.</p>
-
-<p>ARConfiguration (Swift class):  A class that contains the needed configurations for the AR Session taking place, such as whether to record video and audio feed from the user device.</p>
-
-<p>ArCoreApk Class: contains methods for managing the status of ARCore on the device.</p>
-
-<p>ArCoreApk.checkAvailability(): to determine if the current device supports ARCore. If the device doesn’t the app should disable AR-related functionality and hide associated UI elements.</p>
-
-<p>ARFrame (Swift class): This is a class that is part of the ARKit API that holds information about the 3D space around the user through the device camera. The geometrical and physical information about the user’s surroundings, such as 3D dimensions and lighting information, is captured here.</p>
-
-<p>ARModelTarget(AnchorPt) (Swift function): This function uses the information about Anchor points of the users’ nearest flat plane surface to map an area of Target points where the 3D model of the car can be displayed.</p>
-
-<p>ARRecordView (Swift class): This class displays the view where the user can review the immediately created recording, and choose to save, share or delete it as per their needs.</p>
-
-<p>ARSCNRecorder (Swift class): This class handles the video and audio recording functionality for the ARCamView.</p>
-
-<p>ARSCNSync(Session, Scene) (Swift function): This function syncs the information from the Scene (.scn) file of the 3D car model render and its attributes with the information from the ARSession such as camera, motion, and image information.</p>
-
-<p>ARSessionController (Swift class): The class manages the major tasks associated with every AR experience, such as motion tracking, camera passthrough, and image analysis.</p>
-
-<p>ARViewProjection(Session.TargetPt, Scene.SceneFilename): This function renders the 3D car model Scene onto the 3D area mapped out by the ARSession Target points, thus projecting the 3D car model in the userspace. Returns the final projection points of the AR render so the model can adjust based on the user’s motion around the area.</p>
-
-<p>Authenticate(UserInfoParameters) (Dart method, returns UserLoginSuccess): This method communicates with Firebase to authenticate the user.</p>
-
-<p>AutomaticallyUpdateLighting (Swift boolean): This boolean tracks whether the view should automatically adjust the Scene lighting render parameters based on the ARSession camera information. Set to ‘True’ by default.</p>
-
-<p>AutotraderLink: A private varchar type that stores a maximum of MAX characters. A link to the car’s AutoTrader page.</p>
-
-<p>AVRecord (Swift class): This class handles the recording and storage of audio/video input from the device hardware onto the OS storage.</p>
-
-<p>Camera Class: provides information about the camera that is used to capture images. The Camera is a long-lived object and the properties of Camera are updated every time Session.update() is called.</p>
-
-<p>CaptureARFrame() (Swift function): This is a function that triggers the retrieval of information from the camera of the iOS device such as 3D dimensions and lighting conditions.</p>
-
-<p>CarAR: A private varbinary type that stores a maximum of MAX characters. AR model of the car.</p>
-
-<p>CarDatabase: Stores all needed information about each car that would be presented on the app. It is installed locally on the user's device alongside the application package.</p>
-
-<p>CarDBAccessController: This controller is responsible for accessing the Firebase database and converting the fields in the database into CarInformation objects to be used for app functionality.</p>
-
-<p>CarDimensions (Swift var): This is an object that contains the three-dimensional size of the 3D model pertaining to real-life spaces.</p>
-
-<p>CarEngine: A private string under 30 characters. The type of engine the car has.</p>
-
-<p>CarFilterParameters: An array of strings (from CarListView) that the user-specified when they filtered CarListView.</p>
-
-<p>CarFilterProcess(CarInformation CarFilterParameters, boolean CarFilterSuccess): Public method. Loops through CarFilterParameters and checks if its contents are contained in any of the attributes in a car object in AllCars. If yes, the object is appended to FilteredCars and returned. Boolean CarFilterSuccess is also returned.</p>
-
-<p>CarFilterSuccess: Private boolean that tracks whether or not the filter process ran into any errors. Returns true if it did not. The default value is false.</p>
-
-<p>CarId: A private TINYINT of size 6. The primary key of the database. A unique number is assigned to each car.</p>
-
-<p>CarImage: A private varbinary type that stores a maximum of MAX characters. An image of the car.</p>
-
-<p>CarInformation: An object created from CarDatabase.</p>
-
-<p>CarListingInfo: A private CarInformation object. DetailedCarView will access this object and read its information to display on the page.</p>
-
-<p>CarListingInfo: An object of class CarInformation.</p>
-
-<p>CarMake: A private string under 30 characters. The manufacturer of the car.</p>
-
-<p>CarModel: A private string under 30 characters. The model of the car.</p>
-
-<p>CarObj (Dart CarInformation): An object of the CarInformation class.</p>
-
-<p>CarObjectCreator(boolean CarRetrievalSuccess) (Dart method, ret= CarInformation ARRAY): Creates a CarInformation object with data retrieved from the cloud car database, then appends it to an array of CarInformation objects. This process is looped until no more fields exist in the Car database table.</p>
-
-<p>CarRetrievalSuccess: A boolean attribute that identifies whether the appropriate car(s) were retrieved from CarDatabase. Initialized to false.</p>
-
-<p>CarRetriever(UserInformationObject CarInfoParameters, boolean CarRetrievalSuccess): A private method that retrieves the</p>
-
-<p>CarSearchQuery (String): This string is sent to FilterController through a trigger to filter the list of cars currently on the user’s screen based on the comparison of this string with CarInformation object attributes.</p>
-
-<p>CarType: A private string under 30 characters. The type of vehicle the car is.</p>
-
-<p>CarYear: A TINYINT of size 4. The year the car was made.</p>
-
-<p>ChangeLoggedIn (Dart boolean, def = false): Change the user’s logged-in status (LoggedIn); if the user logged in during a previous session, this boolean value changes to ‘True’. Returns boolean.</p>
-
-<p>checkAvailability(Context applicationContext): determines if ARCore is supported on this device.</p>
-
-<p>CheckEmailValid(EmailTextField) (Dart Boolean): Checks if entered email is a valid one</p>
-
-<p>CheckPassValid(PasswordTextField) (Dart Boolean): Checks if the entered password is valid (8 characters minimum).</p>
-
-<p>close(): releases resources (a significant amount of native heap memory) used by an ARCore session. Failure to close sessions explicitly may cause the app to crash.</p>
-
-<p>Config Class: holds settings that are used to configure the session.</p>
-
-<p>Config(Session sesh): constructs a default configuration for a session. This configuration is guaranteed to be supported on all devices that support ARCore.</p>
-
-<p>configure(Config config): Configures the session and verifies that the enabled features in the specified session config are supported with the currently set camera config.</p>
-
-<p>Context: your application’s Android context.</p>
-
-<p>CreateAbout() (Dart method): Automatically creates an App about-page using Flutter.</p>
-
-<p>createAnchor(Pose pose): defines a tracked location in the physical world. See Anchor Class for more details.</p>
-
-<p>CreateUser(UserInfoParameters) (Dart method, returns UserCreationSuccess): This method communicates with Firebase to register the user with information from the UserInfoParameters object.</p>
-
-<p>DBCarConnector() (Dart Function, returns DBConnectionSuccess, DownloadedDBDir): This function attempts to connect to the Firebase cloud storage and retrieve the Car database. If this database is not able to retrieve the latest data, it returns the location of the most recently downloaded local database.</p>
-
-<p>DBConnectionSuccess (Dart Boolean, def = false): Boolean value that checks whether a successful connection was made to the Car Database located in the cloud. If this test fails, the most recently downloaded database to the local cache is used instead.</p>
-
-<p>DeleteFromFavourites() (Dart method): Removes a car listing from the user favourites list.</p>
-
-<p>DeleteRecording(VideoRecording) (Swift function): Frees the AVRecord object containing the immediately created user video from memory.</p>
-
-<p>DetailedCarView Class: The class of information and methods needed to showcase the detailed car view page.</p>
-
-<p>DetailedCarView: UI that shows the user the detailed specifications of the selected car.</p>
-
-<p>DisplayCarDetails(): The method called to show the details of the car.</p>
-
-<p>DisplayCarDetails(CarInformation CarListingInfo): A method that retrieves information from CarListingInfo with its getters and displays it on the page. Returns null.</p>
-
-<p>DisplayLogo(boolean PageLoaded): Public function that displays splash logo only when pageLoaded is false. Returns null.</p>
-
-<p>DownloadedDBDir (Dart string): String that stores the directory and filename of the latest downloaded database from the cloud. Updates if DBCarConnector triggers an update.</p>
-
-<p>EmailTextField (Dart String): User email registration input.</p>
-
-<p>EmailVerify (Dart String): This string contains the email of the user resetting their password in UserPasswordResetView.</p>
-
-<p>EngineSound: A private varbinary type that stores a maximum of MAX characters. A sound recording of the car’s engine.</p>
-
-<p>EnteredEmail (Dart String): Email entered by the user in the login field.</p>
-
-<p>EnteredPassword (Dart String): Password entered by the user in the login field.</p>
-
-<p>ExternalCarListingView Class: The class of information and methods needed to showcase the external link view.</p>
-
-<p>ExternalLink (string): This string contains the external link the user wants to see in a WebView. It can use the AutotraderLink or the ManufacturerLink attributes to open in an external web-browsing environment provided by the OS.</p>
-
-<p>FavouritesEnabled (Dart Boolean): A parameter that is passed to the FilterController based on the user’s enabling of the ‘View Favourites’ button element.</p>
-
-<p>FilterController: Filters information from the car database and outputs its results via the CarDBAccessController, which updates the CarListView.</p>
-
-<p>FilteredCarList (Dart CarInformation ARRAY): An array containing a filtered list of the cars based on the user’s favourites and the search string.</p>
-
-<p>FilteredCars: A private array of car objects after being filtered by CarFilterParameters with the method CarFilterProcess</p>
-
-<p>FinalProjPt (Swift var): These are the final projection points of the AR render that was placed on the camera frame. This information is passed onto the ARSession so it can adjust the position and size of the 3D model as the user walks around the projected model.</p>
-
-<p>FinishVideoRecording(VideoProcess) (Swift function): This function ends the parallel execution of the video recording process, exports an AVRecord object of the final video/audio recording, and releases all recording-related processing threads.</p>
-
-<p>float far: specifies the far clip plane, in meters.</p>
-
-<p>float near: specifies the near clip plane, in meters.</p>
-
-<p>float[] dest: storage for at least 16 floats representing a 4x4 matrix in column-major order</p>
-
-<p>float[] viewMatrix: storage for at least 16 floats representing a 4x4 matrix in column-major order.</p>
-
-<p>Frame (Swift ARFrame object): ARFrame object containing data from device camera.</p>
-
-<p>getAutoStopOnPause(): gets the setting that indicates whether the recording should stop automatically when the ARCore session is paused.</p>
-
-<p>GetAutotraderLink(): Returns the Autotrader listings of the specified car object, returns varchar.</p>
-
-<p>GetCarAR(): Returns the AR 3D model filename and directory in the app package of the specified car object, returns varbinary.</p>
-
-<p>GetCarEngine(): Returns the engine details of the specified car object. Public method returns a string.</p>
-
-<p>GetCarID(): Returns the unique identifier of the specified car object. Public method returns an int.</p>
-
-<p>GetCarImage(): Returns the image filename and directory in the app package of the specified car object, returns varbinary.</p>
-<p>GetCarMake(): Returns the car make of the specified car object. Public method returns a string.</p>
-
-<p>GetCarModel(): Returns the car model of the specified car object. Public method returns a string.</p>
-
-<p>GetCarType(): Returns the car type of the specified car object. Public method returns a string.</p>
-
-<p>GetCarYear(): Returns the year of production of the specified car object. Public method returns an int.</p>
-
-<p>getDisplayOrientedPose(): returns the virtual camera pose in world space for rendering AR content onto the latest frame. T​​his is an OpenGL camera pose with +X pointing right, +Y pointing up, and -Z pointing in the direction the camera is looking, with "right" and "up" being relative to the current logical display orientation.</p>
-
-<p>GetEngineSound(): Returns the car engine sound filename and directory in the app package of the specified car object, returns varbinary.</p>
-
-<p>getInstance(): returns the singleton instance of ArCoreApk.</p>
-
-<p>getInstantPlacementMode(): Returns the currently configured Config.InstantPlacementMode.</p>
-
-<p>GetManufacturerLink(): Returns the manufacturer link of the specified car object, returns varchar.</p>
-
-<p>getMp4DatasetFilePath(): gets the file path to save an MP4 dataset file for the recording.</p>
-
-<p>GetNumDoors(): Returns the number of doors of the specified car object. Public method returns an int.</p>
-
-<p>getPlaneFindingMode(): returns the currently configured plane finding mode.</p>
-
-<p>getPose(): returns the pose of the physical camera in world space for the latest frame.</p>
-
-<p>getProjectionMatrix(float[] dest, int offset, float near, float far): returns a projection matrix for rendering virtual content on top of the camera image.</p>
-
-<p>getRecordingRotation(): get the clockwise rotation in degrees that should be applied to the recorded image (0,90,180 , 270 or -1 for unspecified).</p>
-
-<p>getRecordingStaus(): returns the current recording status.</p>
-
-<p>GetStarRating(): Returns the Autotrader star ratings of the specified car object, returns an int.</p>
-
-<p>getTrackingFailureReason(): returns the reason that getTrackingState is TrackingState.PAUSED. Always returns TrackingFailureReason.NONE when getTrackingState() is TrackingState.TRACKING. If multiple potential causes for motion tracking failure are detected, this reports the most actionaly failure reason.</p>
-
-<p>getTrackingState(): returns the current motion-tracking state of this camera. If this state is anything other than TrackingState.TRACKING the pose should not be considered useful. Use getTrackingFailureReason() to determine the best recommendation to provide to the user to restore motion tracking.</p>
-
-<p>getUpdateMode(): returns the currently configured behavior of Session.update()</p>
-
-<p>GetUserEmail (Dart String): Get the user email from the user object.</p>
-
-<p>GetUserFavourites (Dart ARRAY()): Get an array of the user’s favourite car objects.</p>
-
-<p>GetUserName (Dart String): Get the user’s username from the user object.</p>
-
-<p>GetUserPassword (Dart String): Get the user password from the user object.</p>
-
-<p>getViewMatrix(float[] viewMatrix, int offset): returns the view matrix for the camera for this frame.</p>
-
-<p>Homeview: The screen that allows the user to navigate to the ‘sign up’ and ‘sign in’ pages. Contains 3 images that rotate periodically.</p>
-
-<p>ImageLink: Private string that holds link to image shown stored in PicStorage directory. The string must be a valid path.</p>
-
-<p>ImagesLink: A private string array of size 3 containing the paths to HomeView images. Strings must be a valid path.</p>
-
-<p>InitiateScene(SceneFilename) (Swift function): This function is used to load a Scene (.scn) file by taking the filename and directory of the file as a parameter.</p>
-
-<p>InstantPlacementMode: select the behaviour of Instant Placement. Default is DISABLED. See ARCore references for more details.</p>
-
-<p>int offset: the offset at which to begin writing the matrix (often 0).</p>
-
-<p>Interval: A private integer that represents the number of seconds the images retrieved from PicStorage are rotated. The images rotate every 10 seconds at most.</p>
-
-<p>LightingEnvironment (Swift var): This object controls parameters related to the lighting effects of the 3D Car render. These parameters are configured to ensure the car model remains well-lit in multiple real-lighting environments.</p>
-
-<p>LoggedIn: Private boolean (default false) that tracks whether the user is logged in. Changed by ChangeLoggedIn function.</p>
-
-<p>ManufacturerLink: A private varchar type that stores a maximum of MAX characters. A link to information about the car from the manufacturer’s website.</p>
-
-<p>MAX: 2,147,483,647 characters. Used in VARCHAR and VARBINARY.</p>
-
-<p>NameTextField (Dart String): Username registration input.</p>
-
-<p>NewPassword (Dart String): This string contains the new password the user is attempting to change to while resetting their password.</p>
-
-<p>NumDoors: A private TINYINT of size 1. The number of doors the car has.</p>
-
-<p>PageLoaded: Private boolean attribute that identifies the status of a page.</p>
-
-<p>PasswordTextField (Dart String): User password registration input.</p>
-
-<p>pause(): pause the current session. Stops the camera feed and release resources. The session can be restarted again by calling resume().</p>
-
-<p>PicStorage: A folder that contains images used in HomeView and SplashView.</p>
-
-<p>PlaneFindingMode(): select the behaviour of the plane detection subsystem. See ARCore for more information.</p>
-
-<p>Pose: represents an immutable rigid transformation from one coordinate space to another. See ARCore API documentation for more information.</p>
-
-<p>RecordingConfig Class: configuration related to the session recording.</p>
-
-<p>RecordingConfig(Session session): constructor for RecordingConfig Class.</p>
-
-<p>RecordingStatus: describes the current recording status. Enum values are IO_ERROR, NONE, OK. See ARCore References for more details.</p>
-
-<p>RedirectNotifSettings() (Dart method): This function uses a Flutter feature to redirect the user from the UserSettingsView to the OS-wide notification settings app, for either iOS or Android.</p>
-
-<p>RefreshUICards(CarInformation ARRAY FilteredCarList) (Dart function): This function takes the information available in the FilteredCarList object array to create UI cards in a list format until the ARRAY objects are accounted for. It then assigns an AccessDetailedCar() method trigger to each UI card element based on the CarID represented by each listed element.</p>
-
-<p>requestInstall(Activity applicationActivity, boolean userRequestedInstall): initiates installation of ARCore when needed. When the application launches or enters an AR mode, it should call this method with userRequestedInstall =true. ArCoreApk.InstallStatus.INSTALLED is returned if ARCore is installed and compatible.</p>
-
-<p>resume(): starts or resumes the ARCore Session</p>
-
-<p>RotateImages(int Interval): A public method that rotates the images seen on HomeView. Returns null.</p>
-
-<p>RunARSession(ARConfiguration, RunOptions) (Swift function): This function initiates or runs the ARSession as part of the ARCamView object.</p>
-
-<p>RunOptions (Swift struct): A struct object that contains various options related to transitioning the state of the ARSession when you change ARConfigurations. This field is only relevant after a re-launch; upon the first ARSession launch, it does not change the configuration.</p>
-
-<p>Scene (Swift instance of SCNScene class): A SCNScene object that manages the attributes of each 3D car model it represents. For instance, if an Audi A8 car model must be displayed, then it contains the model along with the applied graphical attributes. Each Scene object can be stored as a .scn file inside the iOS app bundle.</p>
-
-<p>SceneFilename (Swift string): This string has the filename and directory of the .scn file (which is the car 3D model placed in a scene) which is located inside the iOS app bundle.</p>
-
-<p>SCNDimensions (Swift class): This class contains information about the dimensions of a 3D model in a virtual and real-world capacity.</p>
-
-<p>SCNLightingEnv (Swift class): This class contains complex information related to graphical lighting effects, such as ambient occlusion and tesselation.</p>
-
-<p>SCNSceneController (Swift class): This class is a container for the nodes & attributes representing the visual elements of the car model. The attributes control parameters such as dimensions, effects, and lighting of the final 3D render, which is then displayed in the ARCamView as configured.</p>
-
-<p>SCNSceneExport() (Swift function): This function exports a Scene (.scn) with the settled parameters to the file directory in the App bundle where it was initially accessed.</p>
-
-<p>SelectedCar (Dart CarInformation): A specified car object based on the user’s interaction with the UI and/or the creation of UI elements from the FilteredCarList passed by FilterController.</p>
-
-<p>Session (Swift instance of ARSession class): An ARSession object is used to manage the session by ARCamView.</p>
-
-<p>Session(Context context): creates a new ARCore session. Before calling this constructor, the application must check that a compatible version of ARCore is installed.</p>
-
-<p>SessionClass: Manages AR system state and handles the session lifecycle. This class is the main entry point to the ARCore API.</p>
-
-<p>setAutoStopOnPause(boolean enable): specify whether the recording should stop automatically when the ARCore session is paused.</p>
-
-<p>SetAutotraderLink(): null Sets the Autotrader listings of the specified car object, sets varchar.</p>
-
-<p>SetCarAR(): null Sets the AR 3D model filename and directory in the app package of the specified car object, sets varbinary.</p>
-
-<p>SetCarAsFavourite(SelectedCar) (Dart function): Accesses the UserController and adds or removes the CarID of the SelectedCar from the UserInformation Object for the specified user.</p>
-
-<p>SetCarEngine(): null Sets the engine details of the specified car object. Public method sets string.</p>
-
-<p>SetCarID(): null Sets the unique identifier of the specified car object. Public method sets int.</p>
-
-<p>SetCarImage(): null  Sets the image filename and directory in the app package of the specified car object, sets varbinary.</p>
-
-<p>SetCarMake(): null Sets the car make of the specified car object. Public method sets string.</p>
-
-<p>SetCarModel(): null Sets the car model of the specified car object. Public method sets string.</p>
-
-<p>SetCarType(): null Sets the car type of the specified car object. Public method sets string.</p>
-
-<p>SetCarYear(): null Sets the year of production of the specified car object. Public method sets int.</p>
-
-<p>setDisplayGeometry(int displayRotation, int widthPx, int heightPx): Sets the aspect ratio, coordinate scaling, and display rotation.</p>
-
-<p>SetEngineSound(): null Sets the car engine sound filename and directory in the app package of the specified car object, sets varbinary.</p>
-
-<p>setInstantPlacementMode(Config.InstantPlacementMode placementMode): Sets the desired Instant Placement mode.</p>
-
-<p>SetManufacturerLink(): null Sets the manufacturer link of the specified car object, sets varchar.</p>
-
-<p>setMp4DatasetFilePath(String mp4DatasetFilePath): sets the file path to save an MP4 dataset file for the recording.</p>
-
-<p>SetNewPass(string EmailVerify, string NewPassword) (Dart Boolean): Calls the UserController to trigger the password reset procedure in the Firebase API.</p>
-
-<p>SetNumDoors(): null Sets the number of doors of the specified car object. Public method sets int</p>
-
-<p>setPlaneFindingMode(Config.PlaneFindingMode planeFindingMode): Sets the desired plane finding mode.</p>
-
-<p>setRecordingRotation (int rotation): specify the clockwise rotation in degrees that should be applied to the recorded image (0, 90, 180, or 270).</p>
-
-<p>SetSizeAttribute(CarDimensions) (Swift function): This function changes the size of the 3D model inside the .scn file to better align with real-life measurements.</p>
-<p>SetStarRating(): null Sets the Autotrader star ratings of the specified car object, Public sets string.</p>
-
-<p>setUpdateMode(Config.UpdateMode updateMode): Sets the behavior of Session.update().</p>
-
-<p>SetUserEmail (Dart String):  Set the user email in the user object</p>
-<p>SetUserFavourites:ARRAY(): Set, change or add to an array of the user’s favourite car objects.</p>
-
-<p>SetUserName (Dart String): Set the user’s username in the user object.</p>
-
-<p>SetUserPassword (Dart String): Set the user password in the user object.</p>
-
-<p>ShareRecording(VideoRecording) (Swift function): Triggers a call for the iOS sharing functionality for the video file.</p>
-
-<p>SplashView: A logo page displayed while loading the front-end and back-end systems upon the user launching the application.</p>
-
-<p>StarRating: A private string under 30 characters. The rating of the car on autotrader.com.</p>
-
-<p>startRecording (RecordingConfig recordingConfig): Starts a new MP4 dataset file recording that is written to the specific filesystem path. Existing files will be overwritten.</p>
-
-<p>StartVideoRecording() (Swift function): This function starts the parallel execution of the video recording process.</p>
-
-<p>stopRecording(): stops recording and flushes unwritten data to disk. The MP4 dataset file is ready to read after this call returns.</p>
-
-<p>SurfaceQuery(ARFrame) (Swift function): This function queries the information about the users’ environment retrieved by the ARFrame object to return the Anchor points of the nearest flat plane surface.</p>
-
-<p>TargetPt (Swift var): This is an object containing the details of the target points on the plane surface where the AR projections of the 3D model in the user’s environment can be displayed.</p>
-
-<p>Track: Configuration of a Track for recording data on session recording. See ARCore Reference for more details.</p>
-
-<p>TrackingState: enumeration that describes the tracking state of Pose. See ARCore Reference for more information.</p>
-
-<p>TriggerFavouritesFilter(FavouritesEnabled): This function triggers upon tapping the ‘Filter by Favourites’ button to send the boolean to the FilterController and update the user’s view using the RefreshUICards method.</p>
-
-<p>TriggerSearchFilter(CarSearchQuery, FavouritesEnabled) (Dart function returns = CarInformation ARRAY): Triggers upon tapping the ‘Search’ button to use the string in the CarSearchQuery element as a comparative measure of the attributes of all the cars displayed in the CarListView UI.</p>
-
-<p>UIPassChangeFail(Boolean PasswordChangeChk) (Dart method): In UserPasswordResetView, if a password reset attempt results in a failure, a UI pop-up is displayed and can be dismissed for the user to retry.</p>
-
-<p>update(): Updates the state of the ARCore system. To avoid unnecessary frame buffer flushes and reloads, this call should not be made in the middle of rendering a frame or offscreen buffer.</p>
-
-<p>UpdateEmail() (Dart method): Updates email on Firebase based on user change.</p>
-
-<p>UpdateMode: Selects the behavior of Session.update().</p>
-
-<p>UpdateName() (Dart method): Updates name on Firebase based on user change.</p>
-
-<p>UpdatePassword() (Dart method): Updates password on Firebase based on user change.</p>
-
-<p>UserAuthCaller(string EnteredEmail, string EnteredPassword) (Dart method): This function triggers once the user clicks the ‘Sign In’ button on the login page to send the entered user information to UserController.</p>
-
-<p>UserAuthenticationView (Dart class): This view is presented to a returning user who is logging into their existing account to start another session.</p>
-
-<p>UserAuthenticationView: UI that allows the user to log in and handles third-party authentication.</p>
-<p>UserController(Dart class): This class controls the authentication, registration, and user management features of the cAR app by using the Firebase API.</p>
-
-<p>UserControllerCaller(EmailTextField, PasswordTextField, NameTextField) (Dart method): Takes the input from the textboxes in the view and sends them to UserController.</p>
-
-<p>UserCreationSuccess (Dart boolean, def = false): Boolean value that checks if the user was registered to Firebase backend successfully.</p>
-
-<p>UserEmail (Dart String): String value for user email.</p>
-
-<p>UserFavourites (Dart ARRAY()): Array containing the unique IDs of the car objects in the user’s favourites list.</p>
-
-<p>UserInfoParameters (Dart UserInformation Object): An object containing the user information being used by the UserController.</p>
-
-<p>UserInformation (Dart class): This class contains all the information obtained from the user to complete Firebase authentication and control certain app features such as favourites.</p>
-
-<p>UserLoginSuccess (Dart boolean, def=false): Boolean value that checks if the user was authenticated in the Firebase backend successfully.</p>
-
-<p>UserName (Dart String): String value for the user’s custom username.</p>
-
-<p>UserPassword (Dart String): Hash string value for user password.</p>
-
-<p>UserPasswordResetView (Dart class): This view is displayed if the user either forgets or manually attempts to reset their password. It can be either accessed from UserAuthenticationView or UserSettingsView.</p>
-
-<p>UserRegCaller(string EmailTextField, string PasswordTextField, string NameTextField): This function triggers once the user clicks the ‘Sign Up’ button on the registration page to send the entered user information to UserController.</p>
-
-<p>UserRegistrationView (Dart class): This view is presented to a new user registering an account for the first time.</p>
-
-<p>UserRegistrationView: UI that allows the user to create an account to sign in.</p>
-
-<p>VARBINARY: Variable length binary byte string data.</p>
-
-<p>VARCHAR: A set of character data of indeterminate length.</p>
-
-<p>VideoProcess (Swift var): This object handles the video recording process thread. The recording of video data is executed on a separate thread to reduce 3D rendering performance loss.</p>
-
-<p>VideoRecording (Swift AVRecord object): This is an AVRecord object that handles the operating system information of the immediately created AR recording of the video/audio output from ARCamView.</p>
-
-<p>ViewRecording(VideoRecording) (Swift function): Replays the video file of the immediately created recording by the user in ARRecordView.</p>
-
-<p>WebviewExtLaunch(): The method used to open the external link of the car object</p>
-
-<h4>Notes</h4>
-<li>FilterController is a conditional-if controller: it only activates if there is an inherent need for a filter/search system.</li>
-<li>Application is AR Required therefore ArCoreApk.checkAvailability() must be used to check ARCore support and install status, and ArCoreApk.requestInstall() must be used to install(or update) Google Play Services for AR.</li></ul>
-
-
-<h2>Authors</h2>
+<h3>Authors</h3>
 <p>Document: Talal Elagha, Zhenyang Ding, Hussain Phalasiya, Omoma Eriamiantor, Lovette Oyewole, Abhirup Das, Matthew McBurnie, Jordan Den Hoed</p>
 <p>Diagram:  Lovette Oyewole, Zhenyang Ding, Hussain Phalasiya, Omoma Eriamiantor</p>
 
