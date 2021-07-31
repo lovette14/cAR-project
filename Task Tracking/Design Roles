@@ -12,196 +12,188 @@ table, th, td {
     <th>Responsible Member(s)</th>
 	<th>Deadline (11:59pm unless stated otherwise)</th>
 	<th>SQA (Hussain unless stated otherwise)</th>
-	<th>SQA Deadline</th>
+	<th>SQA Deadline (Jul 16 12pm unless stated otherwise)</th>
   </tr>
   <tr>
     <td>Documentation website upkeep</td>
     <td>Lovette Oyewole</td>
 	<td><s>Jul 11</s></td>
-	<td>---</th>
-	<td>---</th>
+	<td>---</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>Task management</td>
     <td>Zhenyang Ding</td>
 	<td></td>
-	<td>---</th>
-	<td>---</th>
+	<td>---</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>Design Documentation</td>
     <td>Hussain Phalasiya, Talal Elagha, Abhirup Das, Zhenyang Ding, Lovette Oyewole, Omoma Eriaminator</td>
 	<td>Jul 16, 12pm</td>
-	<td>Lovette Oyewole, Jordan Den Hoed, Hussain Phalasiya</th>
-	<td>Jul 16, 12pm</th>
+	<td>Zhenyang Ding, Matthew McBurnie, Lovette Oyewole</td>
+	<td>Jul 16, 12pm</td>
   </tr>
   <tr>
     <td>Class Diagram</td>
     <td>Zhenyang Ding, Lovette Oyewole, Hussain Phalasiya, Omoma Eriaminator, Abhirup Das</td>
 	<td>Jul 15</td>
-	<td>---</th>
-	<td>---</th>
+	<td>---</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>CarDatabase table</td>
     <td>Hussain Phalasiya, Jordan Den Hoed</td>
 	<td>Jul 12</td>
-	<td>---</th>
-	<td>---</th>
+	<td>---</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>UserInformation table</td>
     <td>Hussain Phalasiya (late), Muhammed Mirza (late)</td>
 	<td><s>Jul 11</s> Jul 15</td>
-	<td>---</th>
-	<td>---</th>
+	<td>---</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>SplashView</td>
     <td>Lovette Oyewole</td>
 	<td>Jul 10</td>
-	<td></th>
-	<td></th>
+	<td>Zhenyang Ding</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>DisplayPicController</td>
     <td>Hussain Phalasiya (late), Kanav Kaura (late), Talal Elagha (late), Matthew McBurnie</td>
 	<td><s>Jul 12</s> Jul 15</td>
-	<td>---</th>
-	<td>---</th>
+	<td>---</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>UserInformation object</td>
     <td>Hussain Phalasiya (late), Muhammed Mirza (late)</td>
 	<td><s>Jul 11</s> Jul 15</td>
-	<td>---</th>
-	<td>---</th>
+	<td>---</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>HomeView</td>
     <td>Lovette Oyewole</td>
 	<td>Jul 10</td>
-	<td></th>
-	<td></th>
+	<td>Zhenyang Ding</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>UserAuthenticationView</td>
     <td>Jordan Den Hoed</td>
 	<td>Jul 14</td>
-	<td></th>
-	<td></th>
+	<td>---</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>UserController</td>
     <td>Hussain Phalasiya (late)</td>
 	<td><s>Jul 11</s> Jul 15</td>
-	<td>---</th>
-	<td>---</th>
+	<td>---</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>UserRegistrationView</td>
     <td>Jordan Den Hoed</td>
 	<td>Jul 14</td>
-	<td></th>
-	<td></th>
+	<td>Matthew McBurnie</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>LocalRecordStorage</td>
     <td>Lovette Oyewole, Hussain Phalasiya</td>
 	<td>Jul 14</td>
-	<td>---</th>
-	<td>---</th>
+	<td>---</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>UserSettingView</td>
     <td>Talal Elagha, Sameer Mian</td>
 	<td>Jul 14</td>
-	<td></th>
-	<td></th>
+	<td>---</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>UserPasswordResetView</td>
     <td>Lovette Oyewole</td>
 	<td>Jul 14</td>
-	<td></th>
-	<td></th>
+	<td>---</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>CarRecordView</td>
     <td>Hussain Phalasiya</td>
 	<td>---</td>
-	<td>---</th>
-	<td>---</th>
+	<td>Zhenyang Ding</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>ARCamView</td>
     <td>Hussain Phalasiya</td>
 	<td>---</td>
-	<td>---</th>
-	<td>---</th>
+	<td>---</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>CarDBAccessController</td>
     <td>Hussain Phalasiya</td>
 	<td>---</td>
-	<td>---</th>
-	<td>---</th>
+	<td>Zhenyang Ding</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>UserPasswordResetView</td>
     <td>Lovette Oyewole</td>
 	<td>Jul 14</td>
-	<td></th>
-	<td></th>
+	<td>---</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>CarDBAccessController</td>
     <td>Hussain Phalasiya</td>
 	<td>---</td>
-	<td>---</th>
-	<td>---</th>
+	<td>---</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>DetailedCarView</td>
     <td>Jordan Den Hoed</td>
 	<td>Jul 15</td>
-	<td></th>
-	<td></th>
+	<td>---</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>CarDatabase object</td>
     <td>Hussain Phalasiya</td>
 	<td>---</td>
-	<td>---</th>
-	<td>---</th>
-  </tr>
-  <tr>
-    <td>PicStorage</td>
-    <td>---</td>
 	<td>---</td>
-	<td>---</th>
-	<td>---</th>
+	<td>---</td>
   </tr>
   <tr>
     <td>CarListView</td>
     <td>Hussain Phalasiya (late), Muhammed Mirza (late)</td>
 	<td><s>Jul 13</s> Jul 15</td>
-	<td>---</th>
-	<td>---</th>
+	<td>---</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>ExternalLinkController</td>
     <td>Hussain Phalasiya</td>
 	<td>---</td>
-	<td>---</th>
-	<td>---</th>
+	<td>---</td>
+	<td>---</td>
   </tr>
   <tr>
     <td>ExternalCarListingView</td>
     <td>Hussain Phalasiya</td>
 	<td>---</td>
-	<td>---</th>
-	<td>---</th>
+	<td>---</td>
+	<td>---</td>
   </tr>
 </table> 
-
