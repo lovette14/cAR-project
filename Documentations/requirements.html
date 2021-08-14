@@ -7,7 +7,7 @@
 <body>
 <h1>cAR Software Requirements</h1>
 <p> Version 1.0</p>
-<h2>Table of Content</h2>
+<h3>Table of Contents</h3>
 <ul>
     <li>
         <a href="#1">1 Introduction</a>
@@ -63,28 +63,33 @@
     </li>
     <li> <a href="#4"> Supporting information</a>
         <li> <a href="#4.1">4.1 Appendixes</a> </li>
+		<li> <a href="#4.2">Data Dictionary</a> </li>
     </li>
 </ul>
 
 
-<h1 id = "1">1 Introduction</h1>
-<h2 id = "1.1">1.1 Purpose</h2>
+<h2 id = "1">1 Introduction</h2>
+<h3 id = "1.1">1.1 Purpose</h3>
 <p>This document is a description of the requirements of cAR, and contains information about features and how they work. It is meant for the client.</p>
-<h2 id="1.2">1.2 Scope</h2>
-<p>cAR is an app designed to let users choose a car from the cAR interface and visualize their choice in 3D by using Augmented Reality on modern smartphones. The 3D image of the car will be projected into a real life space using the rear phone camera allowing users to be able to walk around it and even hear the sounds of the engine. An additional feature is the information feature displaying the specifications of the car chosen and is linked with a listing feature which allows the user to branch to an auto trading website which has that car listed and can be purchased without the involvement of cAR.</p>
-<h2 id="1.3">1.3 Definitions</h2>
+<h3 id="1.2">1.2 Scope</h3>
+<p>
+	cAR is an app designed to let users choose a car from the cAR interface and 
+	visualize their choice in 3D by using Augmented Reality on modern smartphones. 
+	The 3D image of the car will be projected into a real life space using the rear phone 
+	camera allowing users to be able to walk around it. An additional feature is the 
+	information feature displaying the specifications of the car chosen and is linked with 
+	a listing feature. This allows the user to branch to an auto trading website which has 
+	that car listed and purchasable without the involvement of cAR.
+</p>
+<h3 id="1.3">1.3 Definitions</h3>
 <p><strong>Augmented reality (AR):  </strong>Programs and devices with augmented reality allow the user to view a real-life environment with a digital augmentation superimposed on top of it. For example, the cAR app allows users to visualize a car overlaid on top of a real-life street, garage etc.</p>
-
-<p><strong>Guest User</strong>: A user who is not logged in and can only browse through the models.</p>
-
-<p><strong>Registered User</strong>: A user who is logged in and has extra features such as a favourite list and the ability to record and save videos.</p>
 
 <p><strong>SoC: </strong>System-on-a-Chip. This is the main processing unit on modern smartphones, consisting of various components such as the CPU, GPU and radio components. Modern smartphones also have additional features such as camera processing modules and machine learning processing chips in their chip designs.</p>
 
 <p><strong>UI: </strong>User Interface.</p>
 
 <p><strong>T&C: </strong>Terms and conditions.</p>
-<h2 id="1.4">1.4 References</h2>
+<h3 id="1.4">1.4 References</h3>
 <ul>
     <li>This SRS document is based on <a href="https://bohr.wlu.ca/cp317/notes/IEEE_830.pdf">IEEE Std 830-1998.</a></li>
     <li><a href="https://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html" rel="nofollow">https://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html</a></li>
@@ -93,19 +98,26 @@
     <li><a href="https://www.google.com/url?q=https://www.imobie.com/support/how-to-recover-deleted-app-data-on-android.htm&sa=D&source=editors&ust=1622149962569000&usg=AOvVaw3Qa2vgdEP2_beQoK-p8JtB" rel="nofollow">https://www.google.com/url?q=https://www.imobie.com/support/how-to-recover-deleted-app-data-on-android.htm&sa=D&source=editors&ust=1622149962569000&usg=AOvVaw3Qa2vgdEP2_beQoK-p8JtB</a></li>
     <li><a href="https://www.google.com/url?q=https://www.guardsquare.com/blog/legislative-framework-application-development-canada&sa=D&source=editors&ust=1622159910670000&usg=AOvVaw1hd1KDsvQ4aN4_fuKcjX9e" rel="nofollow">https://www.google.com/url?q=https://www.guardsquare.com/blog/legislative-framework-application-development-canada&sa=D&source=editors&ust=1622159910670000&usg=AOvVaw1hd1KDsvQ4aN4_fuKcjX9e</a></li></ul>
 </ul>
-<h2 id="1.5">1.5 Overview</h2>
+<h3 id="1.5">1.5 Overview</h3>
 <p>The rest of this document outlines the behaviours, appearance, and user interactions of cAR. Topics include hardware and software requirements as well as more details on what the application can do.</p>
 
-<h1 id="2">2 Overall description</h1>
-<h2 id="2.1">2.1 Product Perspective</h2>
+<h2 id="2">2 Overall description</h2>
+<h3 id="2.1">2.1 Product Perspective</h3>
 <p>The application uses the back camera of a phone as a surface for the 3D model of a car. It is expected that the phone is compatible with ARKit and ARCore and has an internet connection.</p>
 
-<h3 id="2.1.1">2.1.1 Interactive Sample <u>GUI</u></h3>
+<h4 id="2.1.1">2.1.1 Interactive Sample <u>GUI</u></h4>
 
 <p><img src="images/Image_0.png" /><img src="images/Image_1.png" /><img src="images/Image_2.png" /><img src="images/Image_3.png" /><img src="images/Image_4.png" /><img src="images/Image_5.png" /><img src="images/Image_6.png" /></p>
 
-<h3 id ="2.1.2">2.1.2 User interfaces</h3>
-<p>The user is met with the welcome page following the installation of the cAR application. The welcome page has the cAR logo centred at the top, followed by information that details the app's functions in a slideshow format with a graphic specific to the text. The user can swipe left and right on the graphic to go forward/backward on the slideshow. On the bottom part of the page, there are three buttons which are the "Sign up" button, followed by the "Sign in" button, then the "Continue as guest" button.</p>
+<h4 id ="2.1.2">2.1.2 User interfaces</h4>
+<p>
+	The user is met with the welcome page following the installation of the cAR application. 
+	The welcome page has the cAR logo centred at the top, followed by information that 
+	details the app's functions in a slideshow format with a graphic specific to the text. 
+	The user can swipe left and right on the graphic to go forward/backward on the slideshow. 
+	On the bottom part of the page, there are three buttons which are the "Sign up" button, 
+	followed by the "Sign in" button, then the "Continue as guest" button.
+</p>
 
 <p>The "Sign up" button redirects the user to a new page that includes a form to create an account for cAR. There are multiple ways for the user to create an account, including using their Facebook account, Google account, Apple ID account, or through cAR. The sign-up page includes the cAR logo centred at the same location as the welcome page and a form with four fields where the user inputs their full name, email, password, and confirmation to the password. The form is followed by a "Sign up" button. The fields have text and graphics that guide the user on where to put their login information using the app itself. Below the “Sign up” button, there are four more buttons, which redirects to the third-party account services which the user can use to create an account. If the user has a cAR account, there is another button below that redirects to the login page.</p>
 
@@ -115,7 +127,7 @@
 
 <p>The password change request page will be accessible through the email sent to the address in which there are two text boxes, the password and confirm password. There is a button below the fields to confirm the password change, and the user is then logged in.</p>
 
-<p>Once the user has logged in or entered as a guest, they are greeted with the main page. From there, the user can view the cars that are available to be seen in AR. The navigation bar is located at the top of the screen, including two buttons and a text field, alongside the cAR logo centred. The leftmost button is the profile button, which redirects to the user page. If the user entered the app through the guest option, the profile button turns them to the sign-up page. Next to the profile button is a “like” button, which redirects to the liked cars page. Right of the logo is the search bar which the user can use to search up a specific car from the library. Below the navigation bar are cards that include the cars to be viewed. The name of the vehicle is present at the top, with a photo of the car located on the card's leftmost side. The right-hand side shows the year and type of the car and a star rating of the car from other users. To view the vehicle, the user must click on the card, which acts as a button. If the user wants to purchase the car, there is also a button that directs the user to listings of the vehicle in autotrader.</p>
+<p>Once the user has logged in or entered as a guest, they are greeted with the main page. From there, the user can view the cars that are available to be seen in AR. The navigation bar is located at the top of the screen, including two buttons and a text field, alongside the cAR logo centred. The leftmost button is the profile button, which redirects to the user page. If the user entered the app through the guest option, the profile button turns them to the sign-up page. Next to the profile button is a “like” button, which redirects to the liked cars page. Right of the logo is the search bar which the user can use to search up a specific car from the library. Below the navigation bar are cards that include the cars to be viewed. The name of the vehicle is present at the top, with a photo of the car located on the card's leftmost side. The right-hand side shows the year and type of the car and a star rating of the car from other users. To view the vehicle, the user must click on the card, which acts as a button. If the user wants to purchase the car, there is also a button that directs the user to listings of the vehicle in Autotrader.</p>
 
 <p>Once the car has been selected, the user enters an information page of the car. From there, a larger photo of the vehicle is present in the center, with the name of the car above it, which takes up the majority of the space. Below that includes the car's ratings, a button to view the car in AR and a heart next to it, which the user clicks on to like the car. There is a short description below alongside information about the car, including the year, type, manufacturer, number of doors and engine. If the user wants more detailed information about the car, they can click the more info button, which directs the user to the manufacturer's website that
 includes exact specifications of the vehicle. </p>
@@ -126,7 +138,7 @@ includes exact specifications of the vehicle. </p>
 
 <p>The user can change important information on the settings page, such as their password, which requires them to input their old password first. They can also give cAR a rating, which redirects them to the app store. The user can go back to the user page by clicking the arrow on the top left.</p>
 
-<h3 id="2.1.3">2.1.3 Hardware interfaces</h3>
+<h4 id="2.1.3">2.1.3 Hardware interfaces</h4>
 <p>To use the cAR app, a user must have a phone that is either ARKit or ARCore compatible.</p>
 <p>iOS phones that support ARKit:
 <ul>
@@ -150,74 +162,113 @@ includes exact specifications of the vehicle. </p>
     <li>OnePlus 5/5T/6</li>
 </ul>
 </p>
-<h3 id="2.1.4">2.1.4 Software interfaces</h3>
+<h4 id="2.1.4">2.1.4 Software interfaces</h4>
 <p>The application requires either an Android OS or iOS. With Android, the version has to be 7.0 or later (some devices will need at least 8.0) in order to be compatible with ARCore. iOS devices need at least version 11.0 with an A9 processor or later for ARKit to work. The application will be available on the Play Store or App Store, respectively. </p>
 
-<h3 id="2.1.5">2.1.5 Communication interfaces</h3>
+<h4 id="2.1.5">2.1.5 Communication interfaces</h4>
 <p>The cAR app requires an active internet connection to find listings of a particular car from nearby sellers, display the star rating for each car listed in the app, and to save AR images and videos of a selected car. The users can then share the videos to social media apps from their gallery.</p>
 
-<h3 id="2.1.7">2.1.7 Operations</h3>
+<h4 id="2.1.7">2.1.7 Operations</h4>
 <p><strong>User initiated:</strong> Directly requested operation by the user as they are likely waiting, but the UI does not need to show the results immediately.</p>
 
 <p><strong>User interactive</strong><strong>:</strong> User directly interacts with the result of an operation in real time and the UI needs to output a result immediately or the application may lag.</p>
 
-<p>User interactive operations that are required consist of the user interacting with the AR feature of the car as well as navigating the application. User initiated operations would be the users logging into their accounts and using the button on the app to be transferred to the autotrader website. A data processing support function used is Firebase, which ensures that user supplied data is correct and relevant.</p>
+<p>User interactive operations that are required consist of the user interacting with the AR feature of the car as well as navigating the application. User initiated operations would be the users logging into their accounts and using the button on the app to be transferred to the Autotrader website. A data processing support function used is Firebase, which ensures that user supplied data is correct and relevant.</p>
 
-<h2 id="2.2">2.2 Product functions</h2>
-<p>Every user is given the choice to be a registered user or guest user. Users can browse through a selection of cars that have an Augmented Reality feature. This allows them to view an AR projection of the selected car superimposed on top of the environment where the back camera of the phone is pointing, as if the car was really there. They can record images they create directly from the app and save it to their camera roll. Users can also see a brief description of the car and a rating provided by autotrader.com. More information can be provided by clicking a button that links to autotrader.com. Users are able to search for a specific car and suggest other cars to be put onto the cAR app using the suggestions tab. Users can also favourite cars so they can find them later.
+<h3 id="2.2">2.2 Product functions</h3>
+<p>
+	Users can 
+	browse through a selection of cars that have an Augmented Reality feature. This 
+	allows them to view an AR projection of the selected car superimposed on top of 
+	the environment where the back camera of the phone is pointing, as if the car 
+	was really there. They can record videos they create directly from the app and 
+	save it to their camera roll. Users can also see a brief description of the car 
+	and a rating provided by Autotrader.com. More information can be provided by 
+	clicking a button that links to Autotrader.com. Users are able to search for a 
+	specific car add cars to their favourites.
 </p>
-<h2 id="2.3">2.3 User characteristics</h2>
-<p>Little technical experience is needed. The user should know how to operate a camera application on their mobile device. The user is also expected to know how to use something similar to an online shopping service, creating an account with their email, logging in, accessing desired items, saving it to a favorites list (being able to locate the save icon in the app), and logging out. Unlike a shopping service, the user would be making a purchase on the autotrader website and not on the cAR app. The user should be able to save a video to their local storage and find it again in their camera roll.</p>
+<h3 id="2.3">2.3 User characteristics</h3>
+<p>
+	Little technical experience is needed. The user should know how to operate a 
+	camera application on their mobile device. They are also expected to know 
+	how to use something similar to an online shopping service, such as create an account 
+	with their email, log in, access desired items, save them to a favorites 
+	list (being able to locate the save icon in the app), and log out. Unlike 
+	a shopping service, the user would be making a purchase on the Autotrader website 
+	and not on the cAR app. The user should be able to save a video to their local 
+	storage and find it again in their camera roll.
+</p>
 
-<h2 id="2.4">2.4 Constraints</h2>
+<h3 id="2.4">2.4 Constraints</h3>
 <p>
 <ul>
-    <li>Memory constraints: The user must have at least 100 mb space available to download the application and use some of its functions. Additional space may be required for saving the recorded videos. This storage space may differ in future versions of the application as there may be additional 3D models added or the models are stored on the cloud instead of the users’ local storage.</li>
-    <li>Regulatory policies: The primary standards cAR must conform to are the T&C for the Apple App Store and the Google Play Store. These standards regulate the publishing and distribution of the cAR applications to mobile devices through these stores on the iOS and Android platforms respectively. The cAR application is constrained by the T&C and user guidelines for the Google Firebase platform. The Personal Information Protection and Electronic Documents Act (PIPEDA) also governs the way organizations use users' data taken from mobile applications in Canada. Except in the case of crises, national security reasons, or foreign affairs, no data would be obtained without formal approval from the user. Customers are also obligated to receive a product even if they decline to consent to data collecting.</li>
-    <li>Hardware limitations: The user’s mobile devices should have the ARCore/ARKit and a working rear facing camera.</li>
-    <li>Interfaces to other applications: The application needs to be able to access the APIs for AR and the camera of the phone. Additionally, there would be accessibility to web pages (e.g. autotrader.ca) for listings of car models. </li>
-    <li>Parallel Operations: The operation of cAR will be stored in the RAM with other applications already stored there on the user’s device.</li>
-    <li>Higher-order language requirements: The development team has decided on using Java, Swift, Dart (for Flutter) to develop the application.</li>
-    <li>Safety and Security considerations: The users app data is stored on Firebase authentication, the recording is done only as per user input and cAR ensures only local access to user recordings.</li>
+    <li><b>Memory constraints:</b> The user must have at least 100 to 350 MB space available to download the application and use some of its functions. Additional space may be required for saving the recorded videos. Required storage space may differ in future versions of the application as there may be additional 3D models added or the models may be stored on the cloud instead of storing it locally.</li>
+
+	<li><b>Regulatory policies:</b> The primary standards cAR must conform to are the T&C for the Apple App Store and the Google Play Store. These standards regulate the publishing and distribution of the cAR applications to mobile devices through these stores on the iOS and Android platforms respectively. The cAR application is constrained by the T&C and user guidelines for the Google Firebase platform. The Personal Information Protection and Electronic Documents Act (PIPEDA) also governs the way organizations use user's data taken from mobile applications in Canada. Except in the case of crises, national security reasons, or foreign affairs, no data would be obtained without formal approval from the user. Customers are also obligated to receive a product even if they decline to consent to data collecting.</li>
+
+	<li><b>Hardware limitations:</b> The user's mobile devices should have a working rear facing camera and a working microphone.</li>
+
+	<li><b>Interfaces to other applications:</b> The application needs to be able to access the phone camera, microphone, and photo gallery. Additionally, there would be accessibility to web pages (e.g. Autotrader.ca) for listings of car models.</li>
+
+	<li><b>Parallel Operations:</b> The operation of cAR will be stored in the RAM with other applications on the user's device. The API for ARKit and ARCore will work simultaneously along the camera API to place a car in the user's vicinity. Once the user initiates recording, the process in which the recording is created runs parallel to the ARCore or ARKit API. When the user finishes recording, the video file is exported from the cache into the user's permanent storage. The recording operation ends.</li>
+
+	<li><b>Higher-order language requirements:</b> The development team has decided on using Java, Swift, and Dart (for Flutter) to develop the application.</li>
+
+	<li><b>Safety and Security considerations:</b> The user's app data is stored on Firebase authentication, the recording is done only as per user input and cAR ensures only local access to user recordings.</li>
+
+
+Process finished with exit code 0
+
 </ul>
 </p>
-<h2 id="2.5">2.5 Assumptions and dependencies</h2>
+<h3 id="2.5">2.5 Assumptions and dependencies</h3>
 <p>We assume that the users' devices will be compatible with ARCore and the ARKit since the app store can filter out users whose phones are not Android OS or iOS 7.0, sometimes 8.0, or later. The application also assumes users are connected to the internet to obtain access to the listings of cars and have a working rear camera to use the AR capabilities. This document assumes that cAR may change over time and that the dependencies may vary with that.</p>
 
 
-<h2 id="2.6">2.6 Apportioning of requirements</h2>
-<p>For future versions of the cAR application, storing the 3D models of the cars on the cloud would lower the memory capacity of the application. With the ability to download videos locally when needed, users can control the amount of storage this application will take. Another feature that may be implemented is a social media feed that would allow users to connect with each other and share recordings. This will require a moderation system and extended terms and conditions in order to ensure a safer social environment. An additional feature that can be implemented is to add multiple model years of the same cars so users are able to better visualize differences across model years for the same car model. Lastly, by web scraping sites such as autotrader, we would be able to automate the search of car listings.</p>
+<h3 id="2.6">2.6 Apportioning of requirements</h3>
+<p>For future versions of the cAR application, storing the 3D models of the cars on the cloud would lower the memory capacity of the application. With the ability to download videos locally when needed, users can control the amount of storage this application will take. Another feature that may be implemented is a social media feed that would allow users to connect with each other and share recordings. This will require a moderation system and extended terms and conditions in order to ensure a safer social environment. An additional feature that can be implemented is to add multiple model years of the same cars so users are able to better visualize differences across model years for the same car model. Lastly, by web scraping sites such as Autotrader, we would be able to automate the search of car listings.</p>
 
-<h2 id="2.7">2.7 Use Case Diagram</h2>
+<h3 id="2.7">2.7 Use Case Diagram</h3>
 <img src="Use%20Cases1.png" />
 
 
-<h1 id="3">3 Specific requirements</h1>
-<h2 id="3.1">3.1 External Interfaces</h2>
+<h2 id="3">3 Specific requirements</h2>
+<h3 id="3.1">3.1 External Interfaces</h3>
 
-<h3 id="3.1.1">3.1.1 User Interface Constraints</h3>
+<h4 id="3.1.1">3.1.1 User Interface Constraints</h4>
 <p>The logical characteristics of the user interface as shown in section 2.1.1 are as follows:
     <ul>
-        <li>The app will follow a consistent font and color scheme:
-            <ul>
-                <li>Font: Segoe UI</li>
-                <li>Colour Scheme Hex Codes: #370EA3, #A39FFF, #FFFFFF, #182CAF</li>
-            </ul>
-        </li>
-        <li>The button shapes and designs are primarily designed to have rounded edges or oval shapes, in order to portray a consistent theme across the UI.</li>
-        <li>The screen layout is confined to the resolutions and screen sizes of the various devices that will run and display the app interface. Since there is an extreme amount of variation in this case, using Flutter as our primary front-end tool allows the app to dynamically adjust the UI elements based on the user’s device dimensions.</li>
-        <li>The app will have frequently accessed interfaces such as the settings, login, logout functionalities available on the home page and login pages. These important settings will be accessible in the upper left corner of the app interface.</li>
-        <li>The app will be responsive to user inputs such as navigating ‘back’ to the previous page in the app, such as swiping from the left edge to right on iOS and tapping the ‘back’ soft key on Android OS, as well as providing an intuitive back button to navigate to previously accessed pages.</li>
-        <li>The camera functionality on the app will use standardized record buttons, and will have easy access to other app features such as engine sounds on the camera view.</li>
-        <li>The app will use OS-dependent share features to share the recorded videos to other applications on the users’ phones or save to their Gallery apps.</li>
+	
+        <li>The app will follow a consistent font and color scheme:</li>
+		
+		<ul>
+
+			<li>Font: Roboto</li>
+
+			<li>Colour Scheme Hex Codes: #370EA3, #A39FFF, #FFFFFF, #182CAF</li>
+		
+		</ul>
+
+		<li>The button shapes and designs are primarily designed to have rounded edges or oval shapes, in order to portray a consistent theme across the UI.</li>
+
+		<li>The screen layout is confined to the resolutions and screen sizes of the various devices that will run and display the app interface. Since there is an extreme amount of variation in this case, using Flutter as our primary front-end tool allows the app to dynamically adjust the UI elements based on the user's device dimensions.</li>
+
+		<li>The app will have frequently accessed interfaces such as the login, logout functionalities available on the home page and login pages.</li>
+
+		<li>The app will be responsive to user inputs such as navigating â€˜back' to the previous page in the app, such as swiping from the left edge to right on iOS and tapping the â€˜back' soft key on Android OS, as well as providing an intuitive back button to navigate to previously accessed pages.</li>
+
+		<li>The camera functionality on the app will use standardized record buttons, and will have easy access to other app features such as engine sounds on the camera view.</li>
+
+		<li>The app will use OS-dependent share features to share the recorded videos to other applications on the user's phones or save to their Gallery apps.</li>
+
     </ul>
 </p>
-<h3 id="3.1.2">3.1.2 Hardware Interfaces</h3>
+<h4 id="3.1.2">3.1.2 Hardware Interfaces</h4>
 <p>The application will run on a smartphone running Android OS or iOS and use the consolidated hardware present on the system in sync with the operating systems to perform various functions as needed. For user input and interaction, the user will use the capacitive touch displays on their mobile phones to gesture, interact and type in required inputs, and the display will react accordingly to create the outputs. The rear camera will be used to project the AR car model onto the user’s environment provided they have a large enough flat surface nearby. </p>
 
 <p>The processing, storage and memory requirements of the app will be taken care of by the SoC, the flash storage and the RAM present on the device. Since mobile devices are subject to battery life, efforts will be made to reduce battery drain by reducing the processing requirements of the application.</p>
 
-<h3 id="3.1.3">3.1.3 Software Interfaces</h3>
+<h4 id="3.1.3">3.1.3 Software Interfaces</h4>
 <p>The main software interfaces cAR will utilize are:
 <ul>
     <li>Apple iOS 11.0 or later</li>
@@ -225,15 +276,27 @@ includes exact specifications of the vehicle. </p>
     <li>Xcode 12.5 to develop and test iOS-sided applications</li>
     <li>Android Studio 4.2, to develop and test Android-sided applications</li>
     <li>Flutter 2.2, a free cross-platform application development tool</li>
-    <li>MySQL Free to manage the application-local database for the individual car listings and their 3D models.</li>
-    <li>Google Firebase, a cloud-based user authentication and secure data management tool for the users’ login information.</li>
+    <li>Google Firebase, a cloud-based user authentication and secure data management tool for the users’ login information and car data.</li>
 </ul>
 </p>
 
-<h3 id="3.1.4">3.1.4 Communications Interfaces</h3>
+<h4 id="3.1.4">3.1.4 Communications Interfaces</h4>
 
-<p>The primary communication interface cAR will use is the WLAN protocol to connect to the internet via the user’s Wi-Fi connection. This internet connection will allow the application to authenticate users as well as access additional application functionality such as recording and access online car listings for their desired models. The user may also require an internet connection to share the recorded videos to external third-party apps, such as social media apps, though this is dependent on the internet requirements of the third-party app. The application will still be able to access limited functionality in case of an unstable or unavailable internet connection, such as viewing the car in AR view through the rear camera and accessing locally available in-app car listings. This may be subject to change if the application transitions to a cloud-based 3D model retrieval system in a future version.</p>
-<h2 id="3.2">3.2 Functions </h2>
+<p>
+	The primary communication interface cAR will use is the WLAN protocol 
+	to connect to the internet via the user’s Wi-Fi connection. This internet 
+	connection will allow the application to authenticate users as well as 
+	access additional application functionality such as accessing the Autotrader 
+	website. The user may also require an internet connection to share the 
+	recorded videos to external third-party apps from their photo gallery, such 
+	as social media apps, though this is dependent on the internet requirements of 
+	the third-party app.  The app periodically updates data w/ the server when 
+	online. When it isn’t, the data remains stored locally until it can sync with 
+	the Cloud. Once the user reconnects, data is written onto the Cloud and vice 
+	versa. When connected to the internet, syncing occurs when there is a major 
+	change to the database.
+</p>
+<h3 id="3.2">3.2 Functions </h3>
     <ul>
         <li>Sign in (will be validated with firebase)</li>
         <li>Change various information, including password and name</li>
@@ -247,12 +310,21 @@ includes exact specifications of the vehicle. </p>
         <li>Click on log out button</li>
     </ul>
 
-<h2 id="3.3">3.3 Performance requirements</h2>
-<p>Due to Firebase limitations, at most 100 users can use cAR at the same time. There is potential to scale to 250, 000 concurrent users if needed. It should take at most 30 seconds to perform each of these actions assuming the user has a good internet connection: to sign in, sign out, connect the user to an autotrading website if the link is clicked, and to save the video to storage. Because the car models are pre-downloaded in the app, it should take at most 1 minute for the car image to be projected to real life.</p>
+<h3 id="3.3">3.3 Performance requirements</h3>
+<p>
+	Due to Firebase limitations, at most 100 users can use cAR at the same time. 
+	There is potential to scale to 250, 000 concurrent users if needed. It should 
+	take at most 30 seconds to perform each of these actions assuming the user 
+	has a good internet connection: to sign in, sign out, connect the user to an 
+	Autotrading website if the link is clicked, and to save the video to storage. 
+	Because the car models are pre-downloaded in the app, it should take from 5 
+	seconds to 1 minute for the car image to be projected to real life, depending 
+	on device performance.
+</p>
 
 
 
-<h2 id="3.4">3.4 Logical database requirements</h2>
+<h3 id="3.4">3.4 Logical database requirements</h3>
 
 <p>cAR requires three main database systems to operate. The first one is a database that stores all Registered User information, including, but not limited to, their email, usernames, passwords, and their local favourites list so they are able to access their favorite cars across multiple devices. This database will be managed in the cloud using Google Firebase, which has the necessary tools required to encrypt sensitive user information while also allowing the developers to access unencrypted data for app iteration. Firebase will manage the user authentication procedures while maintaining a login database for the same.
     The second database system is local to the cAR app itself, which is a table containing the following information:
@@ -267,31 +339,31 @@ includes exact specifications of the vehicle. </p>
                 <li>Car engine type</li>
             </ul>
         </li>
-        <li>Links to websites (for instance, autotrader.ca) with listings for the relevant car model</li>
+        <li>Links to websites (for instance, Autotrader.ca) with listings for the relevant car model</li>
         <li>The 3D model(s) of the car</li>
         This database is subject to change and iteration with future releases of the cAR application.
         The third database pertains to the storage of the user recordings. Recordings made inside the application are saved to the local storage in the device memory upon user prompt, where it is available to share to other applications as per the user’s leisure. User recordings are linked via foreign key to the car model name, to make identification of recordings via filename easier for the user.
     </ol>
 </p>
-<h2 id="3.5">3.5 Design constraints</h2>
+<h3 id="3.5">3.5 Design constraints</h3>
 <p>The design team tools are limited to the resources they can use which are provided through Wilfrid Laurier University or those that do not go over the budget ($0.00 is the budget). Developer fees for publishing the app is not singularly tied down to the cost of this individual project.</p>
 
-<h2 id="3.6">3.6 Software system attributes</h2>
+<h3 id="3.6">3.6 Software system attributes</h3>
 
-<h3 id="3.6.1">3.6.1 Reliability</h3>
+<h4 id="3.6.1">3.6.1 Reliability</h4>
 <p>In order to secure reliable performance of the cAR app, the user must have access to a reliable internet connection and a compatible phone with sufficient memory availability. A phone that doesn’t have enough memory can slow down the performance of the app. See Sections 2.1.3 for a list of compatible phones and 2.4 for constraints.</p>
 
-<h3 id="3.6.2">3.6.2 Availability</h3>
+<h4 id="3.6.2">3.6.2 Availability</h4>
 <p>The ability to recover lost data in the cAR app is determined by the capabilities of the operating system of the phone that it is being run on and whether or not the user has backed up their data. For example Android phones store app data on an app server, where data is not deleted when the app itself is deleted, and can be recovered if the user has their backup settings turned on. Additionally, login checkpoints are provided through the Firebase authentication protocol.</p>
-<h3 id="3.6.4">3.6.4 Maintainability</h3>
+<h4 id="3.6.4">3.6.4 Maintainability</h4>
 <p>cAR code will be modularized and GitHub will be used for version control. The creators will follow appropriate testing and common programming practices across the team.</p>
 
-<h3 id="3.6.5">3.6.5 Portability Done</h3>
-<p>cAR is a cross platform application, it will operate on both Android and IOS devices. You will be able to download the app off both the App Store and the Google Play store. There will not be a windows version of this application, but you will be able to download the videos on your device and view them on the computer </p>
+<h4 id="3.6.5">3.6.5 Portability</h4>
+<p>cAR is a cross platform application, it will operate on both Android and IOS devices. You will be able to download the app off both the App Store and the Google Play store. There will not be a Windows version of this application, but you will be able to download the videos on your mobile device and view them on the computer </p>
 
 
-<h1 id="4">4 Supporting information</h1>
-<h2 id="4.1">4.1 Appendixes</h2>
+<h2 id="4">4 Supporting information</h2>
+<h3 id="4.1">4.1 Appendixes</h3>
 <p>The appendixes are part of the requirements.
 <ul>
     <li><a href="https://bohr.wlu.ca/cp317/notes/IEEE_830.pdf" rel="nofollow">https://bohr.wlu.ca/cp317/notes/IEEE_830.pdf</a></li>
@@ -303,7 +375,15 @@ includes exact specifications of the vehicle. </p>
     <li><a href="https://www.imobie.com/support/how-to-recover-deleted-app-data-on-android.htm" rel="nofollow">https://www.imobie.com/support/how-to-recover-deleted-app-data-on-android.htm</a></li>
 </ul>
 </p>
-<h2>Authors</h2>
+
+<h3 id="4.2">Data Dictionary</h3>
+	<dl>
+		<dt>Augmented reality (AR)</dt> <dd>Programs and devices with augmented reality allow the user to view a real-life environment with a digital augmentation superimposed on top of it. For example, the cAR app allows users to visualize a car overlaid on top of a real-life street, garage etc.</dd>
+		<dt>SoC</dt> <dd>System-on-a-Chip. This is the main processing unit on modern smartphones, consisting of various components such as the CPU, GPU and radio components. Modern smartphones also have additional features such as camera processing modules and machine learning processing chips in their chip designs.</dd>
+		<dt>T&amp;C</dt> <dd>Terms and conditions.</dd>
+		<dt>UI</dt> <dd>User Interface.</dd>
+	</dl>
+<h3>Authors</h3>
 <p>Zhenyang Ding, Muhammed Mirza, Lovette Oyewole, Kanav Kaura, Jordan Den Hoed, Omoma Eriamiantor, Hilal Safi, Hussain Phalasiya, Talal Elagha</p>
 </body>
 </html>
