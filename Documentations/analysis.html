@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>Analysis Document</h1>
-    <p> Version 1.0</p>
+    <p> Version 1.2</p>
 
     <h2>Table of Content</h2>
     <ul>
@@ -34,35 +34,31 @@
     </ul>
     <h2 id="1">Entity Objects</h2>
     <div>
-        <li>CarDatabase - This database stores all needed information about each individual
-            car that would be presented on the app, which includes the AR models. It is installed locally on the user's device alongside the application package.
+        <li>CarDatabase - This firebase firebase database stores all needed information about each individual 
+            car that would be presented on the app, which includes the AR models.
         </li>
+          <li>CarInformation - An object created from CarDatabase.</li>
         <li>
             LocalRecordStorage - The location in user’s phone storage where completed AR recordings are stored.
         </li>
-        <li>PicStorage - A directory that has images needed for the home view and the splash view.</li>
         <li>UserInformation - A firebase database that stores the information of the user.</li>
     </div>
 
     <h2 id="2">Control Objects</h2>
     <div>
+        <li>ARSCNRecorder - This class handles the video and audio recording functionality for the ARCamView.</li>
+         <li>ARSessionController - The class manages the major tasks associated with every AR experience, such as motion tracking, camera passthrough, and image analysis.</li>
         <li>
-            ARViewController - Gets input from the device’s camera and records a video of the 3D car model being
-            displayed on the screen. This object also deletes this recording or saves it to the user’s local storage
-            depending on the user’s decision.
+            CarDBAccessController - Accesses the car database and returns a list of information about cars and converts the fields in the database into CarInformation objects to be used for app functionality. The cars displayed are determined by FilterController.
         </li>
-        <li>
-            CarDBAccessController - Accesses the car database and returns a list of information about cars. The cars
-            displayed are determined by FilterController.
-        </li>
-        <li>
-            DisplayPicController - Takes the images stored in PicStorage and displays them in SplashView and HomeView.
-        </li>
+   
         <li>ExternalLinkController - Handles the opening and closing of external link in-app with Mobile Deep Linking.</li>
         <li>
             FilterController - Filters information from the car database and outputs its results via the
             CarDBAccessController, which updates the CarListView.
         </li>
+          <li>SCNSceneController - This class is a container for the nodes & attributes representing the visual elements of the car model. The attributes control parameters such as dimensions, effects, and lighting of the final 3D render, which is then displayed in the ARCamView as configured.
+          </li>
         <li>
             UserController - Takes the information entered into UserAuthenticationView and sends it to Firebase to
             verify their identity. Takes the information entered into UserRegistrationView and stores it in
@@ -76,22 +72,15 @@
     <div>
         <li>
             ARCamView - UI that opens the user’s camera and displays an AR model of the selected car on a flat surface
-            determined by the user’s camera position. The user can then save and record what they are seeing on their
+            determined by the user’s camera position. The user can then record and save what they are seeing on their
             device through the camera.
         </li>
-        <li>
-            CameraRecordView' - Shows the users the recording produced from the ARCamView, they can also choose whether to
-            save and/or share the video to other social media.
-        </li>
+          <li>ARRecordView - A view where users can review, save or share their recently created recording. </li>
+ 
         <li>CarListView - UI that allows the user to display the list of cars in the system based on how they filter it.</li>
         <li>DetailedCarView - UI that shows the user the detailed specifications of the selected car.</li>
         <li>ExternalCarListingView - UI that displays the car listings on autotrader.ca.</li>
         <li>HomeView - The screen that allows the user to navigate to the ‘sign up’ and ‘sign in’ pages.</li>
-        <li>RecordView - A view where users can review, save or share their recently created recording.</li>
-        <li>
-            SplashView - A logo page displayed while loading the front-end and back-end systems upon the user
-            launching the application.
-        </li>
         <li>UserAuthenticationView - UI that allows the user to log in and handles third party authentication.</li>
         <li>UserPasswordResetView - UI that allows a user to change their password. </li>
         <li>UserRegistrationView - UI that allows the user to create an account in order to sign in.</li>
