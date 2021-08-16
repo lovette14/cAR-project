@@ -323,24 +323,34 @@ Process finished with exit code 0
 
 <h3 id="3.4">3.4 Logical database requirements</h3>
 
-<p>cAR requires three main database systems to operate. The first one is a database that stores all Registered User information, including, but not limited to, their email, usernames, passwords, and their local favourites list so they are able to access their favorite cars across multiple devices. This database will be managed in the cloud using Google Firebase, which has the necessary tools required to encrypt sensitive user information while also allowing the developers to access unencrypted data for app iteration. Firebase will manage the user authentication procedures while maintaining a login database for the same.
-    The second database system is local to the cAR app itself, which is a table containing the following information:
-    <ol>
-        <li>Car model: This is the primary key of the database.</li>
-        <li>Description, including, but not limited to:
-            <ul>
-                <li>Car model year(s)</li>
-                <li>Car body type</li>
-                <li>Car manufacturer</li>
-                <li>No. of doors</li>
-                <li>Car engine type</li>
-            </ul>
-        </li>
-        <li>Links to websites (for instance, Autotrader.ca) with listings for the relevant car model</li>
-        <li>The 3D model(s) of the car</li>
-        This database is subject to change and iteration with future releases of the cAR application.
-        The third database pertains to the storage of the user recordings. Recordings made inside the application are saved to the local storage in the device memory upon user prompt, where it is available to share to other applications as per the user’s leisure. User recordings are linked via foreign key to the car model name, to make identification of recordings via filename easier for the user.
+<p>
+<p>cAR requires three main database systems to operate. The first one is a realtime database on Firebase that stores all user information not mandatory for logging in, such as their favourites list. The other is an authentication database on Firebase which stores user information used for logging in, such as their password. The third database pertains to the storage of the user recordings. Recordings made inside the application are saved to the local storage in the device memory upon user prompt, where it is available to share to other applications as per the user’s leisure. User recordings are linked via foreign key to the car model name, to make identification of recordings via filename easier for the user.</p>
+<p>The realtime database’s user table contains the following information about the user:</p>
+	<ol>
+		<li>First name</li>
+		<li>Last name</li>
+		<li>Location</li>
+		<li>Email</li>
+		<li>Age</li>
+	</ol>
+<p>The realtime database system also has a table containing the following information:</p>
+	<ol>
+        <li>Car ID: This is the primary key of the database.</li>
+		<li>Description, including, but not limited to:</li>
+		<ul>
+			<li>Car model</li>
+			<li>Car model year(s)</li>
+			<li>Car make</li>
+			<li>Car body type</li>
+			<li>Car manufacturer</li>
+			<li>No. of doors</li>
+			<li>Car engine type</li>
+		</ul>
+		<li>Link to Autotrader website with listings for the relevant car model</li>
+		<li>An image of the car</li>
+		<li>The 3D model(s) of the car</li>
     </ol>
+	<p>This database is subject to change and iteration with future releases of the cAR application. </p>
 </p>
 <h3 id="3.5">3.5 Design constraints</h3>
 <p>The design team tools are limited to the resources they can use which are provided through Wilfrid Laurier University or those that do not go over the budget ($0.00 is the budget). Developer fees for publishing the app is not singularly tied down to the cost of this individual project.</p>
@@ -351,7 +361,7 @@ Process finished with exit code 0
 <p>In order to secure reliable performance of the cAR app, the user must have access to a reliable internet connection and a compatible phone with sufficient memory availability. A phone that doesn’t have enough memory can slow down the performance of the app. See Sections 2.1.3 for a list of compatible phones and 2.4 for constraints.</p>
 
 <h4 id="3.6.2">3.6.2 Availability</h4>
-<p>The ability to recover lost data in the cAR app is determined by the capabilities of the operating system of the phone that it is being run on and whether or not the user has backed up their data. For example Android phones store app data on an app server, where data is not deleted when the app itself is deleted, and can be recovered if the user has their backup settings turned on. Additionally, login checkpoints are provided through the Firebase authentication protocol.</p>
+<p>Lost data is very easy to recover. Models are part of the app package and cannot be lost. Changes made to the app data are linked to the user’s account, which is backed up on Firebase. See section 3.1.4 Communications Interface for explanation of data syncing process.</p>
 <h4 id="3.6.4">3.6.4 Maintainability</h4>
 <p>cAR code will be modularized and GitHub will be used for version control. The creators will follow appropriate testing and common programming practices across the team.</p>
 
