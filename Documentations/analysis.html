@@ -9,9 +9,9 @@
 </head>
 <body>
     <h1>Analysis Document</h1>
-    <p> Version 1.2</p>
+    <p> Version 1.0</p>
 
-    <h2>Table of Content</h2>
+    <h2>Table of Contents</h2>
     <ul>
         <li><a href="#1">Entity Objects</a></li>
         <li><a href="#2">Control Objects</a></li>
@@ -34,31 +34,35 @@
     </ul>
     <h2 id="1">Entity Objects</h2>
     <div>
-        <li>CarDatabase - This firebase firebase database stores all needed information about each individual 
-            car that would be presented on the app, which includes the AR models.
+        <li>CarDatabase - This database stores all needed information about each individual
+            car that would be presented on the app, which includes the AR models. It is installed locally on the user's device alongside the application package.
         </li>
-          <li>CarInformation - An object created from CarDatabase.</li>
         <li>
             LocalRecordStorage - The location in user’s phone storage where completed AR recordings are stored.
         </li>
+        <li>PicStorage - A directory that has images needed for the home view and the splash view.</li>
         <li>UserInformation - A firebase database that stores the information of the user.</li>
     </div>
 
     <h2 id="2">Control Objects</h2>
     <div>
-        <li>ARSCNRecorder - This class handles the video and audio recording functionality for the ARCamView.</li>
-         <li>ARSessionController - The class manages the major tasks associated with every AR experience, such as motion tracking, camera passthrough, and image analysis.</li>
         <li>
-            CarDBAccessController - Accesses the car database and returns a list of information about cars and converts the fields in the database into CarInformation objects to be used for app functionality. The cars displayed are determined by FilterController.
+            ARViewController - Gets input from the device’s camera and records a video of the 3D car model being
+            displayed on the screen. This object also deletes this recording or saves it to the user’s local storage
+            depending on the user’s decision.
         </li>
-   
+        <li>
+            CarDBAccessController - Accesses the car database and returns a list of information about cars. The cars
+            displayed are determined by FilterController.
+        </li>
+        <li>
+            DisplayPicController - Takes the images stored in PicStorage and displays them in SplashView and HomeView.
+        </li>
         <li>ExternalLinkController - Handles the opening and closing of external link in-app with Mobile Deep Linking.</li>
         <li>
             FilterController - Filters information from the car database and outputs its results via the
             CarDBAccessController, which updates the CarListView.
         </li>
-          <li>SCNSceneController - This class is a container for the nodes & attributes representing the visual elements of the car model. The attributes control parameters such as dimensions, effects, and lighting of the final 3D render, which is then displayed in the ARCamView as configured.
-          </li>
         <li>
             UserController - Takes the information entered into UserAuthenticationView and sends it to Firebase to
             verify their identity. Takes the information entered into UserRegistrationView and stores it in
@@ -72,15 +76,22 @@
     <div>
         <li>
             ARCamView - UI that opens the user’s camera and displays an AR model of the selected car on a flat surface
-            determined by the user’s camera position. The user can then record and save what they are seeing on their
+            determined by the user’s camera position. The user can then save and record what they are seeing on their
             device through the camera.
         </li>
-          <li>ARRecordView - A view where users can review, save or share their recently created recording. </li>
- 
+        <li>
+            CameraRecordView' - Shows the users the recording produced from the ARCamView, they can also choose whether to
+            save and/or share the video to other social media.
+        </li>
         <li>CarListView - UI that allows the user to display the list of cars in the system based on how they filter it.</li>
         <li>DetailedCarView - UI that shows the user the detailed specifications of the selected car.</li>
         <li>ExternalCarListingView - UI that displays the car listings on autotrader.ca.</li>
         <li>HomeView - The screen that allows the user to navigate to the ‘sign up’ and ‘sign in’ pages.</li>
+        <li>RecordView - A view where users can review, save or share their recently created recording.</li>
+        <li>
+            SplashView - A logo page displayed while loading the front-end and back-end systems upon the user
+            launching the application.
+        </li>
         <li>UserAuthenticationView - UI that allows the user to log in and handles third party authentication.</li>
         <li>UserPasswordResetView - UI that allows a user to change their password. </li>
         <li>UserRegistrationView - UI that allows the user to create an account in order to sign in.</li>
@@ -144,62 +155,115 @@
 
     <h2 id="8">Data Dictionary</h2>
     <div>
-        <li>ARCamView - UI that opens the user’s camera and displays an AR model of the selected car. See ARCamView definition under Boundary Objects for further explanation.</li>
+        <dl>
+			<dt>Access Internal Car Database</dt> <dd> Access CarDatabase, which came with the app</dd>
 
-        <li>ARViewController - Records car model being displayed and can delete/save this video. See ARViewController definition under Control Objects for further explanation.</li>
+			<dt>Access local picture storage</dt> <dd> Access the image folder that is part of the app and retrieve appropriate picture depending on what to display</dd>
 
-        <li>CameraRecordView - Shows the users the recording produced from the ARCamView, they can also choose whether to save and/or share the video to other social media.</li>
+			<dt>Access User account on Firebase</dt> <dd> The user’s account is accessed if authentication is successful. User information is synced with the app.</dd>
 
-        <li>CarDatabase - Stores all needed car information. See CarDatabase definition under Entity Objects for further explanation.</li>
+			<dt>Apply filter based off boundary object request</dt> <dd> The list of cars returned by CarDBAccessController is filtered by the criteria retrieved from the boundary object so that only cars that match the filter are kept.</dd>
 
-        <li>CarDBAccessController - Accesses the car database and returns a list of information about cars. The cars displayed are determined by FilterController.</li>
+			<dt>ARCamView </dt> <dd> UI that opens the user’s camera and displays an AR model of the selected car. See ARCamView definition under Boundary Objects for further explanation.</dd>
 
-        <li>CarListView - UI that allows the user to display the list of cars in the system based on how they filter it.</li>
+			<dt>ARViewController </dt> <dd> Records car model being displayed and can delete/save this video. See ARViewController definition under Control Objects for further explanation.</dd>
 
-        <li>DetailedCarView - UI that shows the user the detailed specifications of the selected car.</li>
+			<dt>Call FilterController to get specific car</dt> <dd> Filter cars using criteria that would match only the desired car</dd>
 
-        <li>DisplayPicController - Takes the images stored in PicStorage and displays them in SplashView and HomeView.</li>
+			<dt>CameraRecordView </dt> <dd> Shows the users the recording produced from the ARCamView, they can also choose whether to save and/or share the video to other social media.</dd>
 
-        <li>ExternalCarListingView - UI that displays the car listings on autotrader.ca.</li>
+			<dt>CarDatabase </dt> <dd> Stores all needed car information. See CarDatabase definition under Entity Objects for further explanation.</dd>
 
-        <li>ExternalLinkController - Handles the opening and closing of external link in-app with Mobile Deep Linking.</li>
+			<dt>CarDBAccessController </dt> <dd> Accesses the car database and returns a list of information about cars. The cars displayed are determined by FilterController.</dd>
 
-        <li>FilterController - Filters information from the car database and outputs its results via the CarDBAccessController, which updates the CarListView.</li>
+			<dt>CarListView </dt> <dd> UI that allows the user to display the list of cars in the system based on how they filter it.</dd>
 
-        <li>HomeView - The screen that allows the user to navigate to the ‘sign up’ and ‘sign in’ pages.</li>
+			<dt>Delete recording</dt> <dd> The user chooses to permanently delete the recording from their device.</dd>
 
-        <li>LocalRecordStorage - The location in user’s phone storage where completed AR recordings are stored.</li>
+			<dt>DetailedCarView </dt> <dd> UI that shows the user the detailed specifications of the selected car.</dd>
 
-        <li>Mobile Deep Linking - Practice of linking to a specific part of a mobile app instead of launching the app itself. See Mobile Deep Linking definition under Others for further explanation.</li>
+			<dt>Display home screen pictures on HomeView</dt> <dd> Display the 3 home screen pictures in the upper part of the screen that allows the user to scroll through them.</dd>
 
-        <li>PicStorage - A directory that has images needed for the home view and the splash view.</li>
+			<dt>Display HomeView</dt> <dd> Displays the HomeView screen</dd>
 
-        <li>RecordView - A view where users can review, save or share their recently created recording.</li>
+			<dt>Display link in web view</dt> <dd> Access the link and open a browser window inside the app</dd>
 
-        <li>Search Listener - Works with the filter controller, in order for the user to effectively use the search bar.</li>
+			<dt>Display splash logo on app startup</dt> <dd> Display the splash logo when the app is launched. Display ends when the app is ready to display the HomeView.</dd>
 
-        <li>SplashView - A logo page displayed while loading the front-end and back-end systems upon the user launching the application.</li>
+			<dt>Display UserAuthenticationView</dt> <dd> Displays UserAuthenticationView if the user presses the ‘Sign in’ button</dd>
 
-        <li>UI - User interface.</li>
+			<dt>Display UserRegistrationView</dt> <dd> Displays UserRegistrationView if the user presses the ‘Sign up’ button</dd>
 
-        <li>User - A person that is using the application.</li>
+			<dt>Display video in Camera Record View</dt> <dd> The video is played back to the user</dd>
 
-        <li>UserAuthenticationView - UI that allows the user to log in and handles third party authentication.</li>
+			<dt>DisplayPicController </dt> <dd> Takes the images stored in PicStorage and displays them in SplashView and HomeView.</dd>
 
-        <li>
-            UserController - Takes the information entered into UserAuthenticationView and sends it to Firebase to verify their identity. See UserController definition under Control Objects for further explanation.
-        </li>
+			<dt>ExternalCarListingView </dt> <dd> UI that displays the car listings on autotrader.ca.</dd>
 
-        <li>UserInformation - A Firebase database that stores the information of the user.</li>
+			<dt>ExternalLinkController </dt> <dd> Handles the opening and closing of external link in</dd>
 
-        <li>UserPasswordResetView - UI that allows a user to change their password.</li>
+			<dt>Extract car’s listing link</dt> <dd> Return the car object’s Autotrader link attribute</dd>
 
-        <li>UserRegistrationView - UI that allows the user to create an account in order to sign in.</li>
+			<dt>FilterController </dt> <dd> Filters information from the car database and outputs its results via the CarDBAccessController, which updates the CarListView.</dd>
 
-        <li>UserSettingsView - UI that allows a user to manipulate their account settings.</li>
+			<dt>HomeView </dt> <dd> The screen that allows the user to navigate to the ‘sign up’ and ‘sign in’ pages.</dd>
+
+			<dt>LocalRecordStorage </dt> <dd> The location in user’s phone storage where completed AR recordings are stored.</dd>
+
+			<dt>Mobile Deep Linking </dt> <dd> Practice of linking to a specific part of a mobile app instead of launching the app itself. See Mobile Deep Linking definition under Others for further explanation.</dd>
+
+			<dt>PicStorage </dt> <dd> A directory that has images needed for the home view and the splash view.</dd>
+
+			<dt>Record input from ARCameraView</dt> <dd> Finish recording the video of the user projecting their car into their surroundings.</dd>
+
+			<dt>RecordView </dt> <dd> A view where users can review, save or share their recently created recording.</dd>
+
+			<dt>Return filtered car list</dt> <dd> Returns list of cars filtered using the criteria that the user entered into the boundary object</dd>
+
+			<dt>Return list of all cars</dt> <dd> Returns all cars in CarDatabase</dd>
+
+			<dt>Save or share recording</dt> <dd> The user chooses to save the recording to their device permanently or share it on a third</dd>
+
+			<dt>Save to LocalRecordStorage</dt> <dd> If the user chooses to save the recording to their device permanently, this is done.</dd>
+
+			<dt>Save to temporary location in device storage</dt> <dd> The video is temporarily stored in the user’s device until the user decides what to do with it or the app is closed.</dd>
+
+			<dt>Search Listener </dt> <dd> Works with the filter controller, in order for the user to effectively use the search bar.</dd>
+
+			<dt>Send user credentials to Firebase</dt> <dd> Sends user credentials to Firebase to authenticate them.</dd>
+
+			<dt>Sign in through 3rd party</dt> <dd> Redirects the user to a third party service to complete their sign in process</dd>
+
+			<dt>Sign up through 3rd party</dt> <dd> Redirects the user to a third party service to complete their sign up process</dd>
+
+			<dt>SplashView </dt> <dd> A logo page displayed while loading the front</dd>
+
+			<dt>UI </dt> <dd> User interface.</dd>
+
+			<dt>User </dt> <dd> A person that is using the application.</dd>
+
+			<dt>User Settings Change</dt> <dd> User accesses the settings page and changes their email or password. This changes the user information on Firebase as well.</dd>
+
+			<dt>UserAuthenticationView </dt> <dd> UI that allows the user to log in and handles third party authentication.</dd>
+
+			<dt>UserController </dt> <dd> Takes the information entered into UserAuthenticationView and sends it to Firebase to verify their identity. See UserController definition under Control Objects for further explanation.</dd>
+
+			<dt>UserInformation </dt> <dd> A Firebase database that stores the information of the user.</dd>
+
+			<dt>UserPasswordResetView </dt> <dd> UI that allows a user to change their password.</dd>
+
+			<dt>UserRegistrationView </dt> <dd> UI that allows the user to create an account in order to sign in.</dd>
+
+			<dt>UserSettingsView </dt> <dd> UI that allows a user to manipulate their account settings.</dd>
+
+
+Process finished with exit code 0
+
+
+		</dl>
     </div>
 
-    <h2>Authors</h2>
+    <h3>Authors</h3>
     <p>
         <strong>Documentation:</strong>
         <br>Kanav Kaura, Joanne Truong, Matthew McBurnie, Talal Elagha, Hussain Phalasiya, Lovette Oyewole, Muhammed Mirza, Hilal Safi, Zhenyang Ding, Joanne Truong, Sameer Mian
