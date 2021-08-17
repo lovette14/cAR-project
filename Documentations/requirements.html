@@ -111,14 +111,23 @@
 
 <h4 id ="2.1.2">2.1.2 User interfaces</h4>
 <p>
-	Following the installation of the application, when the user is met with the splash page when they open the app. It has an image of the car logo, and the page lasts until necessary information is loaded. If the user is already logged in, they are taken to the main page. Otherwise, they are shown the welcome page.
+	Following the installation of the application, when the user is met with the splash page when 
+	they open the app. It has an image of the car logo, and the page lasts until necessary information 
+	is loaded. If the user is already logged in, they are taken to the main page. Otherwise, they are 
+	shown the welcome page.
 </p>
 
 <p>The welcome page has the cAR logo centred at the top, followed by information that details the app's functions in a slideshow format with an image specific to the text. The user can swipe left and right on the image to go forward/backward on the slideshow. On the bottom part of the page, there are two buttons which are the "Sign up" button, followed by the "Sign in" button.</p>
 
 <p>The "Sign up" button redirects the user to a new page that includes a form to create an account for cAR. There are multiple ways for the user to create an account, including using their personal accounts, such as Facebook, Google, Apple ID, etc. They can also sign up through cAR. The sign-up page includes the cAR logo centred at the same location as the welcome page and a form with four fields where the user inputs their full name, email, password, and confirmation to the password. The form is followed by a "Sign up" button. The fields have text and images that guide the user on where to put their login information using the app itself. Below the “Sign up” button, there are four more buttons, which redirects to the third-party account services which the user can use to create an account. If the user has a cAR account, there is another button below that redirects to the login page.</p>
 
-<p>The sign-in page looks very similar to the sign-up page. The cAR logo remains present and below it are two fields, email and password, where the user fills out if they created their account using the cAR login service, and the "Sign in" button. In the case of the user forgetting their password, they could click on the forgot password button. If the user created their cAR account through a third-party social media service, they could log in using the same buttons from the sign-up page. If the user does not have an account and wishes to create one, they can use the sign-up button at the bottom of the page, which will redirect them to the sign-up page.</p>
+<p>The sign-in page looks very similar to the sign-up page. The cAR logo remains present and below it are two 
+	fields, email and password, where the user fills out if they created their account using the cAR login service, 
+	and the "Sign in" button. In the case of the user forgetting their password, they could click on the forgot 
+	password button. If the user created their cAR account through a third-party social media service, they could 
+	log in using the same buttons from the sign-up page. If the user does not have an account and wishes to create 
+	one, they can use the sign-up button at the bottom of the page, which will redirect them to the sign-up page.
+	The sign in is authenticated by a method that ensures the entered credentials match a user in Firebase.</p>
 
 <p>Suppose the user clicks on the forget password button on the sign-in page. In that case, they are directed to the forget password page, which includes text which explains how the user can change their password. To do so, they need to input their email address used to create their cAR account, which is in a textbox, and there is a button below it to submit a password change request. There is also an arrow on the top left, which allows the user to go back to the sign-in page.</p>
 
